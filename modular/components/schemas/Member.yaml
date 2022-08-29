@@ -1,0 +1,178 @@
+type: object
+properties:
+  id:
+    $ref: ./TrelloID.yaml
+  activityBlocked:
+    type: boolean
+    example: false
+  avatarHash:
+    type: string
+    example: fc8faaaee46666a4eb8b626c08933e16
+  avatarUrl:
+    type: string
+    format: url
+    example: https://trello-avatars.s3.amazonaws.com/fc8faaaee46666a4eb8b626c08933e16
+  bio:
+    type: string
+    example: 👋 I'm a developer advocate at Trello!
+  bioData:
+    type: object
+    properties:
+      emoji:
+        type: object
+  confirmed:
+    type: boolean
+    example: true
+  fullName:
+    type: string
+    example: Bentley Cook
+  idEnterprise:
+    type: string
+    $ref: ./TrelloID.yaml
+  idEnterprisesDeactivated:
+    type: array
+    items:
+      type: string
+  idMemberReferrer:
+    $ref: ./TrelloID.yaml
+    nullable: true
+    example: null
+  idPremOrgsAdmin:
+    type: array
+    items:
+      $ref: ./TrelloID.yaml
+  initials:
+    type: string
+    example: BC
+  memberType:
+    type: string
+    enum:
+      - normal
+      - ghost
+    example: normal
+  nonPublic:
+    type: object
+  nonPublicAvailable:
+    type: boolean
+    example: false
+  products:
+    type: array
+    items:
+      type: integer
+  url:
+    type: string
+    format: url
+    example: https://trello.com/bentleycook
+  username:
+    type: string
+    example: bentleycook
+  status:
+    type: string
+    enum:
+      - disconnected
+    example: disconnected
+  aaEmail:
+    type: string
+    format: email
+    nullable: true
+    example: null
+  aaEnrolledDate:
+    type: string
+    example: null
+    nullable: true
+  aaId:
+    type: string
+    example: null
+    nullable: true
+  avatarSource:
+    type: string
+    enum:
+      - gravatar
+      - upload
+    example: gravatar
+  email:
+    type: string
+    example: bcook@atlassian.com
+  gravatarHash:
+    type: string
+    example: 0a1e804f6e35a65ae5e1f7ef4c92471c
+  idBoards:
+    type: array
+    items:
+      $ref: ./TrelloID.yaml
+  idOrganizations:
+    type: array
+    items:
+      $ref: ./TrelloID.yaml
+  idEnterprisesAdmin:
+    type: array
+    items:
+      $ref: ./TrelloID.yaml
+  limits:
+    $ref: ./LimitsObject.yaml
+  loginTypes:
+    type: array
+    items:
+      type: string
+      enum:
+        - password
+        - saml
+      example: password
+  marketingOptIn:
+    type: object
+    properties:
+      optedIn:
+        type: boolean
+        example: false
+      date:
+        type: string
+        format: date
+        example: '2018-04-26T17:03:25.155Z'
+  messagesDismissed:
+    type: object
+    properties:
+      name:
+        type: string
+        example: ad-security-features
+      count:
+        type: string
+        example: 4
+      lastDismissed:
+        type: string
+        format: date
+        example: '2019-03-11T20:19:46.809Z'
+      _id:
+        $ref: ./TrelloID.yaml
+        example: 5995d44573d197eada632a32
+  oneTimeMessagesDismissed:
+    type: array
+    items:
+      type: string
+  prefs:
+    $ref: ./MemberPrefs.yaml
+  trophies:
+    type: array
+    items:
+      type: string
+  uploadedAvatarHash:
+    type: string
+    example: dac3ad49ff117829dd63a79bb2ea3426
+  uploadedAvatarUrl:
+    type: string
+    format: url
+    example: https://trello-avatars.s3.amazonaws.com/dac3ad49ff117829dd63a79bb2ea3426
+  premiumFeatures:
+    type: array
+    items:
+      type: string
+  isAaMastered:
+    type: boolean
+    example: false
+  ixUpdate:
+    type: number
+    example: '48427'
+  idBoardsPinned:
+    type: array
+    nullable: true
+    items:
+      $ref: ./TrelloID.yaml

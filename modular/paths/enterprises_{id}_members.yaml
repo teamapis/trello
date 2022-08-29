@@ -1,0 +1,111 @@
+get:
+  tags: []
+  summary: Get Members of Enterprise
+  description: Get the members of an enterprise.
+  operationId: get-enterprises-id-members
+  parameters:
+    - name: id
+      in: path
+      description: ID of the Enterprise to retrieve.
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: fields
+      in: query
+      description: A comma-seperated list of valid [member fields](member).
+      schema:
+        type: string
+        default: avatarHash, fullName, initials, username
+    - name: filter
+      in: query
+      description: >-
+        Pass a [SCIM-style query](/cloud/trello/scim/) to filter members. This
+        takes precedence over the all/normal/admins value of members. If any of
+        the below member_* args are set, the member array will be paginated.
+      required: false
+      schema:
+        type: string
+        nullable: true
+    - name: sort
+      in: query
+      description: >-
+        This parameter expects a [SCIM-style](/cloud/trello/scim/) sorting value
+        prefixed by a `-` to sort descending. If no `-` is prefixed, it will be
+        sorted ascending. Note that the members array returned will be paginated
+        if `members` is 'normal' or 'admins'. Pagination can be controlled with
+        member_startIndex, etc, but the API response will not contain the total
+        available result count or pagination status data.
+      required: false
+      schema:
+        type: string
+    - name: sortBy
+      in: query
+      description: >-
+        Deprecated: Please use `sort` instead. This parameter expects a
+        [SCIM-style](/cloud/trello/scim/) sorting value. Note that the members
+        array returned will be paginated if `members` is 'normal' or 'admins'.
+        Pagination can be controlled with member_startIndex, etc, but the API
+        response will not contain the total available result count or pagination
+        status data.
+      required: false
+      schema:
+        type: string
+    - name: sortOrder
+      in: query
+      description: >-
+        Deprecated: Please use `sort` instead. One of: `ascending`,
+        `descending`, `asc`, `desc`.
+      required: false
+      schema:
+        type: string
+        enum:
+          - ascending
+          - descending
+          - asc
+          - desc
+        default: null
+        nullable: true
+    - name: startIndex
+      in: query
+      description: Any integer between 0 and 9999.
+      required: false
+      schema:
+        type: integer
+        format: int32
+        minimum: 0
+        maximum: 9999
+    - name: count
+      in: query
+      description: '[SCIM-style filter](/cloud/trello/scim/).'
+      required: false
+      schema:
+        type: string
+        default: none
+    - name: organization_fields
+      in: query
+      description: >-
+        Any valid value that the [nested organization field
+        resource](/cloud/trello/guides/rest-api/nested-resources/) accepts.
+      required: false
+      schema:
+        type: string
+        default: displayName
+    - name: board_fields
+      in: query
+      description: >-
+        Any valid value that the [nested board
+        resource](/cloud/trello/guides/rest-api/nested-resources/) accepts.
+      required: false
+      schema:
+        type: string
+        default: name
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Member.yaml

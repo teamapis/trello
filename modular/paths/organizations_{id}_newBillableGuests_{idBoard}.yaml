@@ -1,0 +1,22 @@
+get:
+  tags: []
+  summary: Get Organizations new billable guests
+  description: Used to check whether the given board has new billable guests on it.
+  operationId: get-organizations-id-newbillableguests-idboard
+  parameters:
+    - name: id
+      in: path
+      description: The ID or name of the organization
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: idBoard
+      in: path
+      description: The ID of the board to check for new billable guests.
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success

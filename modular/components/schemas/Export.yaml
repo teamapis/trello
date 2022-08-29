@@ -1,0 +1,29 @@
+type: object
+properties:
+  id:
+    $ref: ./TrelloID.yaml
+    example: 5dced8665015383ed5ca248c
+  status:
+    type: object
+    properties:
+      attempts:
+        type: number
+        example: 0
+      finished:
+        type: boolean
+        example: false
+      stage:
+        type: string
+        example: Export_queued
+  startedAt:
+    type: string
+    format: date-time
+    example: '2019-11-15T16:55:02.000Z'
+  size:
+    type: string
+    nullable: true
+    example: null
+  exportUrl:
+    type: string
+    nullable: true
+    example: null

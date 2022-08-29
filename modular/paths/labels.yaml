@@ -1,0 +1,28 @@
+post:
+  tags: []
+  summary: Create a Label
+  description: Create a new Label on a Board.
+  operationId: post-labels
+  parameters:
+    - name: name
+      in: query
+      description: Name for the label
+      required: true
+      schema:
+        type: string
+    - name: color
+      in: query
+      description: The color for the label.
+      required: true
+      schema:
+        $ref: ../components/schemas/Color.yaml
+    - name: idBoard
+      in: query
+      description: The ID of the Board to create the Label on.
+      required: true
+      schema:
+        type: string
+  deprecated: false
+  responses:
+    '200':
+      description: Success

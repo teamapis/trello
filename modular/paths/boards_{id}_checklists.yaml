@@ -1,0 +1,16 @@
+get:
+  tags: []
+  summary: Get Checklists on a Board
+  description: Get all of the checklists on a Board.
+  operationId: boards-id-checklists
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the board
+      required: true
+      schema:
+        type: string
+  deprecated: false
+  responses:
+    '200':
+      description: Success

@@ -1,0 +1,22 @@
+put:
+  tags: []
+  summary: Update idEmailList Pref on a Board
+  description: Change the default list that email-to-board cards are created in.
+  operationId: put-boards-id-myprefs-idemaillist
+  parameters:
+    - name: id
+      in: path
+      description: The id of the board to update
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: value
+      in: query
+      description: The id of an email list.
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success

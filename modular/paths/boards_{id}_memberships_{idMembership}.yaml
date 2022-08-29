@@ -1,0 +1,59 @@
+put:
+  tags: []
+  summary: Update Membership of Member on a Board
+  description: Update an existing board by id
+  operationId: put-boards-id-memberships-idmembership
+  parameters:
+    - name: id
+      in: path
+      description: The id of the board to update
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: idMembership
+      in: path
+      description: The id of a membership that should be added to this board.
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: type
+      in: query
+      description: >-
+        One of: admin, normal, observer. Determines the type of member that this
+        membership will be to this board.
+      required: true
+      schema:
+        type: string
+        enum:
+          - admin
+          - normal
+          - observer
+    - name: member_fields
+      in: query
+      description: >-
+        Valid values: all, avatarHash, bio, bioData, confirmed, fullName,
+        idPremOrgsAdmin, initials, memberType, products, status, url, username
+      required: false
+      explode: false
+      style: form
+      schema:
+        type: string
+        default: fullName, username
+        enum:
+          - all
+          - avatarHash
+          - bio
+          - bioData
+          - confirmed
+          - fullName
+          - idPremOrgsAdmin
+          - initials
+          - memberType
+          - products
+          - status
+          - url
+          - username
+  deprecated: false
+  responses:
+    '200':
+      description: Success

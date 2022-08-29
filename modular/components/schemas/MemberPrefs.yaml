@@ -1,0 +1,65 @@
+type: object
+properties:
+  timezoneInfo:
+    type: object
+    properties:
+      offsetCurrent:
+        type: integer
+        example: 360
+      timezoneCurrent:
+        type: string
+        example: CST
+      offsetNext:
+        type: integer
+        example: 300
+      dateNext:
+        type: string
+        format: date
+        example: '2020-03-08T08:00:00.000Z'
+      timezoneNext:
+        type: string
+        example: CDT
+  privacy:
+    type: object
+    properties:
+      fullName:
+        type: string
+        enum:
+          - public
+          - private
+          - collaborator
+        example: public
+      avatar:
+        type: string
+        enum:
+          - public
+          - private
+          - collaborator
+        example: public
+  sendSummaries:
+    type: boolean
+    example: true
+  minutesBetweenSummaries:
+    type: integer
+    example: 60
+  minutesBeforeDeadlineToNotify:
+    type: integer
+    example: 1440
+  colorBlind:
+    type: boolean
+    example: true
+  locale:
+    type: string
+    example: en-AU
+  timezone:
+    type: string
+    example: America/Chicago
+  twoFactor:
+    type: object
+    properties:
+      enabled:
+        type: boolean
+        example: true
+      needsNewBackups:
+        type: boolean
+        example: false

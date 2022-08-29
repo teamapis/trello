@@ -1,0 +1,22 @@
+put:
+  tags: []
+  summary: Move List to Board
+  description: Move a List to a different Board
+  operationId: put-id-idboard
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the list
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: value
+      in: query
+      description: The ID of the board to move the list to
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success

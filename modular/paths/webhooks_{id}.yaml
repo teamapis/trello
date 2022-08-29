@@ -1,0 +1,70 @@
+parameters:
+  - name: id
+    in: path
+    description: ID of the webhook to retrieve.
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get a Webhook
+  description: Get a webhook by ID.
+  operationId: get-webhooks-id
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Webhook.yaml
+put:
+  tags: []
+  summary: Update a Webhook
+  description: Update a webhook by ID.
+  operationId: put-webhooks-id
+  parameters:
+    - name: description
+      in: query
+      description: A string with a length from `0` to `16384`.
+      required: false
+      schema:
+        type: string
+        maxLength: 16384
+        minLength: 0
+    - name: callbackURL
+      in: query
+      description: A valid URL that is reachable with a `HEAD` and `POST` request.
+      required: false
+      schema:
+        type: string
+        format: url
+    - name: idModel
+      in: query
+      description: ID of the model to be monitored
+      required: false
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: active
+      in: query
+      description: Determines whether the webhook is active and sending `POST` requests.
+      required: false
+      schema:
+        type: boolean
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Webhook.yaml
+delete:
+  tags: []
+  summary: Delete a Webhook
+  description: Delete a webhook by ID.
+  operationId: delete-webhooks-id
+  deprecated: false
+  responses:
+    '200':
+      description: Success

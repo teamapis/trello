@@ -1,0 +1,18 @@
+get:
+  tags: []
+  summary: Get auditlog data for an Enterprise
+  description: >-
+    Returns an array of Actions related to the Enterprise object. Used for
+    populating data sent to Google Sheets from an Enterprise's audit log page:
+    https://trello.com/e/{enterprise_name}/admin/auditlog. An Enterprise admin
+    token is required for this route.
+  operationId: get-enterprises-id-auditlog
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/EnterpriseAuditLog.yaml

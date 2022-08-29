@@ -1,0 +1,29 @@
+get:
+  tags: []
+  summary: Get Token's Member
+  description: Retrieve information about a token's owner by token.
+  operationId: get-tokens-token-member
+  parameters:
+    - name: token
+      in: path
+      description: ''
+      required: true
+      schema:
+        type: string
+    - name: fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of valid fields for [Member
+        Object](/cloud/trello/guides/rest-api/object-definitions/).
+      required: false
+      schema:
+        $ref: ../components/schemas/MemberFields.yaml
+        default: all
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Member.yaml

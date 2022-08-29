@@ -1,0 +1,81 @@
+parameters:
+  - name: id
+    in: path
+    description: The ID or username of the member
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+  - name: idBackground
+    in: path
+    description: The ID of the board background
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get a boardBackground of a Member
+  description: Get a member's board background
+  operationId: get-members-id-boardbackgrounds-idbackground
+  parameters:
+    - name: fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of: `brightness`, `fullSizeUrl`,
+        `scaled`, `tile`
+      required: false
+      schema:
+        type: string
+        default: all
+        enum:
+          - all
+          - brightness
+          - fullSizeUrl
+          - scaled
+          - tile
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BoardBackground.yaml
+put:
+  tags: []
+  summary: Update a Member's custom Board background
+  description: Update a board background
+  operationId: put-members-id-boardbackgrounds-idbackground
+  parameters:
+    - name: brightness
+      in: query
+      description: 'One of: `dark`, `light`, `unknown`'
+      required: false
+      schema:
+        enum:
+          - dark
+          - light
+          - unknown
+        type: string
+    - name: tile
+      in: query
+      description: Whether the background should be tiled
+      required: false
+      schema:
+        type: boolean
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BoardBackground.yaml
+delete:
+  tags: []
+  summary: Delete a Member's custom Board background
+  description: Delete a board background
+  operationId: delete-members-id-boardbackgrounds-idbackground
+  deprecated: false
+  responses:
+    '200':
+      description: Success

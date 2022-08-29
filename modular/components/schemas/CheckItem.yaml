@@ -1,0 +1,23 @@
+type: object
+properties:
+  idChecklist:
+    $ref: ./TrelloID.yaml
+    example: 5dc9b507756e182c76007621
+  state:
+    type: string
+    enum:
+      - complete
+      - incomplete
+    example: incomplete
+  id:
+    $ref: ./TrelloID.yaml
+    example: 5dc9b509f02f4314edc4303a
+  name:
+    type: string
+  nameData:
+    type: string
+    nullable: true
+    example: null
+  pos:
+    type: string
+    example: 1673

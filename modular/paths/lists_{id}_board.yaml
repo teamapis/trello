@@ -1,0 +1,25 @@
+get:
+  tags: []
+  summary: Get the Board a List is on
+  description: Get the board a list is on
+  operationId: get-lists-id-board
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the list
+      required: true
+      schema:
+        type: string
+    - name: fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of board
+        [fields](/cloud/trello/guides/rest-api/object-definitions/#board-object)
+      required: false
+      schema:
+        type: string
+        default: all
+  deprecated: false
+  responses:
+    '200':
+      description: Success

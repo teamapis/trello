@@ -1,0 +1,38 @@
+post:
+  tags: []
+  summary: Create a Listing for Plugin
+  description: Create a new listing for a given locale for your Power-Up
+  operationId: post-plugins-idplugin-listing
+  parameters:
+    - name: idPlugin
+      in: path
+      description: The ID of the Power-Up for which you are creating a new listing.
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              type: string
+              description: The description to show for the given locale
+            locale:
+              type: string
+              description: The locale that this listing should be displayed for.
+            overview:
+              type: string
+              description: The overview to show for the given locale.
+            name:
+              type: string
+              description: The name to use for the given locale.
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/PluginListing.yaml

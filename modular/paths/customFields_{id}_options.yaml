@@ -1,0 +1,25 @@
+parameters:
+  - name: id
+    in: path
+    description: ID of the customfield.
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+post:
+  tags: []
+  summary: Add Option to Custom Field dropdown
+  description: Add an option to a dropdown Custom Field
+  operationId: get-customfields-id-options
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+get:
+  tags: []
+  summary: Get Options of Custom Field drop down
+  description: Get the options of a drop down Custom Field
+  operationId: post-customfields-id-options
+  deprecated: false
+  responses:
+    '200':
+      description: Success

@@ -1,0 +1,26 @@
+get:
+  tags: []
+  summary: Get a field on a Board
+  description: Get a single, specific field on a board
+  operationId: get-boards-id-field
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the board.
+      required: true
+      schema:
+        type: string
+    - name: field
+      in: path
+      description: >-
+        The field you'd like to receive. Valid values: closed, dateLastActivity,
+        dateLastView, desc, descData, idMemberCreator, idOrganization,
+        invitations, invited, labelNames, memberships, name, pinned, powerUps,
+        prefs, shortLink, shortUrl, starred, subscribed, url.
+      required: true
+      schema:
+        type: string
+  deprecated: false
+  responses:
+    '200':
+      description: Success

@@ -1,0 +1,44 @@
+put:
+  tags: []
+  summary: Update Member to be admin of Enterprise
+  description: Make Member an admin of Enterprise.
+  operationId: put-enterprises-id-admins-idmember
+  parameters:
+    - name: id
+      in: path
+      description: ID of the enterprise to retrieve.
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: idMember
+      in: path
+      description: ID of member to be made an admin of enterprise.
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+delete:
+  tags: []
+  summary: Remove a Member as admin from Enterprise.
+  description: Remove a member as admin from an enterprise.
+  operationId: enterprises-id-organizations-idmember
+  parameters:
+    - name: id
+      in: path
+      description: ID of the Enterprise to retrieve.
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: idMember
+      in: path
+      description: ID of the member to be removed as an admin from enterprise.
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success

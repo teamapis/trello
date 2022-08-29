@@ -1,0 +1,14 @@
+type: object
+properties:
+  id:
+    $ref: ./TrelloID.yaml
+  url:
+    type: string
+    format: url
+  scaled:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          $ref: ./TrelloID.yaml

@@ -1,0 +1,138 @@
+get:
+  tags: []
+  summary: Get an Enterprise
+  description: Get an enterprise by its ID.
+  operationId: get-enterprises-id
+  parameters:
+    - name: id
+      in: path
+      description: ID of the enterprise to retrieve.
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: fields
+      in: query
+      description: >-
+        Comma-separated list of: `id`, `name`, `displayName`, `prefs`,
+        `ssoActivationFailed`, `idAdmins`, `idMembers` (Note that the members
+        array returned will be paginated if `members` is 'normal' or 'admins'.
+        Pagination can be controlled with member_startIndex, etc, but the API
+        response will not contain the total available result count or pagination
+        status data. Read the SCIM documentation [here]() for more information
+        on filtering), `idOrganizations`, `products`, `userTypes`, `idMembers`,
+        `idOrganizations`
+      required: false
+      schema:
+        type: string
+        default: all
+    - name: members
+      in: query
+      description: 'One of: `none`, `normal`, `admins`, `owners`, `all`'
+      required: false
+      schema:
+        type: string
+        default: none
+    - name: member_fields
+      in: query
+      description: 'One of: `avatarHash`, `fullName`, `initials`, `username`'
+      required: false
+      schema:
+        type: string
+        default: avatarHash, fullName, initials, username
+    - name: member_filter
+      in: query
+      description: >-
+        Pass a [SCIM-style query](/cloud/trello/scim/) to filter members. This
+        takes precedence over the all/normal/admins value of members. If any of
+        the member_* args are set, the member array will be paginated.
+      required: false
+      schema:
+        type: string
+        default: none
+    - name: member_sort
+      in: query
+      description: >-
+        This parameter expects a [SCIM-style](/cloud/trello/scim/) sorting value
+        prefixed by a `-` to sort descending. If no `-` is prefixed, it will be
+        sorted ascending. Note that the members array returned will be paginated
+        if `members` is 'normal' or 'admins'. Pagination can be controlled with
+        member_startIndex, etc, but the API response will not contain the total
+        available result count or pagination status data.
+      required: false
+      schema:
+        type: string
+    - name: member_sortBy
+      in: query
+      description: >-
+        Deprecated: Please use member_sort. This parameter expects a [SCIM-style
+        sorting value](/cloud/trello/scim/). Note that the members array
+        returned will be paginated if `members` is `normal` or `admins`.
+        Pagination can be controlled with `member_startIndex`, etc, and the API
+        response's header will contain the total count and pagination state.
+      required: false
+      schema:
+        type: string
+        default: none
+    - name: member_sortOrder
+      in: query
+      description: >-
+        Deprecated: Please use member_sort. One of: `ascending`, `descending`,
+        `asc`, `desc`
+      required: false
+      schema:
+        type: string
+        default: id
+    - name: member_startIndex
+      in: query
+      description: Any integer between 0 and 100.
+      required: false
+      schema:
+        type: integer
+        format: int32
+        default: '1'
+    - name: member_count
+      in: query
+      description: 0 to 100
+      required: false
+      schema:
+        type: integer
+        format: int32
+        default: '10'
+    - name: organizations
+      in: query
+      description: 'One of: `none`, `members`, `public`, `all`'
+      required: false
+      schema:
+        type: string
+        default: none
+    - name: organization_fields
+      in: query
+      description: Any valid value that the [nested organization field resource]() accepts.
+      required: false
+      schema:
+        type: string
+        default: none
+    - name: organization_paid_accounts
+      in: query
+      description: ''
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: organization_memberships
+      in: query
+      description: >-
+        Comma-seperated list of: `me`, `normal`, `admin`, `active`,
+        `deactivated`
+      required: false
+      schema:
+        type: string
+        default: none
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Enterprise.yaml

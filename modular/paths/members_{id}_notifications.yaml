@@ -1,0 +1,103 @@
+get:
+  tags: []
+  summary: Get Member's Notifications
+  description: Get a member's notifications
+  operationId: get-members-id-notifications
+  parameters:
+    - name: id
+      in: path
+      description: The ID or username of the member
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: entities
+      in: query
+      description: ''
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: display
+      in: query
+      description: ''
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: filter
+      in: query
+      description: ''
+      required: false
+      schema:
+        type: string
+        default: all
+    - name: read_filter
+      in: query
+      description: 'One of: `all`, `read`, `unread`'
+      required: false
+      schema:
+        type: string
+        default: all
+    - name: fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of notification
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      schema:
+        type: string
+        default: all
+    - name: limit
+      in: query
+      description: Max 1000
+      required: false
+      schema:
+        type: integer
+        format: int32
+        default: '50'
+    - name: page
+      in: query
+      description: Max 100
+      required: false
+      schema:
+        type: integer
+        format: int32
+        default: '0'
+    - name: before
+      in: query
+      description: A notification ID
+      required: false
+      schema:
+        type: string
+    - name: since
+      in: query
+      description: A notification ID
+      required: false
+      schema:
+        type: string
+    - name: memberCreator
+      in: query
+      description: ''
+      required: false
+      schema:
+        type: boolean
+        default: true
+    - name: memberCreator_fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of member
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      schema:
+        type: string
+        default: avatarHash,fullName,initials,username
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Notification.yaml

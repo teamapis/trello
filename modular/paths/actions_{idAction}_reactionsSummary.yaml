@@ -1,0 +1,16 @@
+get:
+  tags: []
+  summary: List Action's summary of Reactions
+  description: List a summary of all reactions for an action
+  operationId: get-actions-idaction-reactionsummary
+  parameters:
+    - name: idAction
+      in: path
+      description: The ID of the action
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success

@@ -1,0 +1,23 @@
+get:
+  tags: []
+  summary: Get the pluginData Scoped to Organization
+  description: Get organization scoped pluginData on this Workspace
+  operationId: get-organizations-id-plugindata
+  parameters:
+    - name: id
+      in: path
+      description: The ID or name of the organization
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              oneOf:
+                - $ref: ../components/schemas/PluginData.yaml

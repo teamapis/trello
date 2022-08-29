@@ -1,0 +1,30 @@
+put:
+  tags: []
+  summary: Deactivate or reactivate a member of an Organization
+  description: Deactivate or reactivate a member of a Workspace
+  operationId: put-organizations-id-members-idmember-deactivated
+  parameters:
+    - name: id
+      in: path
+      description: The ID or name of the organization
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: idMember
+      in: path
+      description: The ID or username of the member to update
+      required: true
+      schema:
+        oneOf:
+          - $ref: ../components/schemas/TrelloID.yaml
+          - type: string
+    - name: value
+      in: query
+      description: ''
+      required: true
+      schema:
+        type: boolean
+  deprecated: false
+  responses:
+    '200':
+      description: Success

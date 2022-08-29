@@ -1,0 +1,10 @@
+type: string
+enum:
+  - id
+  - idMemberCreator
+  - data
+  - type
+  - date
+  - limits
+  - display
+  - memberCreator

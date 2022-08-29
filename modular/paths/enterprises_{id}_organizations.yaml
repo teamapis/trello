@@ -1,0 +1,39 @@
+put:
+  tags: []
+  summary: Transfer an Organization to an Enterprise.
+  description: Transfer an organization to an enterprise.
+  operationId: put-enterprises-id-organizations
+  parameters:
+    - name: id
+      in: path
+      description: ID of the Enterprise to retrieve.
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: idOrganization
+      in: query
+      description: ID of Organization to be transferred to Enterprise.
+      required: true
+      schema:
+        type: string
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              anyOf:
+                - $ref: ../components/schemas/Organization.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '404':
+      $ref: ../components/responses/NotFound.yaml
+    default:
+      description: Unexpected error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Error.yaml

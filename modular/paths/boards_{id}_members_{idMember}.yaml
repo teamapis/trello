@@ -1,0 +1,53 @@
+parameters:
+  - name: id
+    in: path
+    description: The id of the board to update
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+  - name: idMember
+    in: path
+    description: The id of the member to add to the board.
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+put:
+  tags: []
+  summary: Add a Member to a Board
+  description: Add a member to the board.
+  operationId: put-boards-id-members-idmember
+  parameters:
+    - name: type
+      in: query
+      description: >-
+        One of: admin, normal, observer. Determines the type of member this user
+        will be on the board.
+      required: true
+      schema:
+        type: string
+        enum:
+          - admin
+          - normal
+          - observer
+    - name: allowBillableGuest
+      in: query
+      description: >-
+        Optional param that allows organization admins to add multi-board guests
+        onto a board.
+      required: false
+      schema:
+        type: boolean
+        default: false
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+delete:
+  tags: []
+  summary: Remove Member from Board
+  description: ''
+  operationId: boardsidmembersidmember
+  deprecated: false
+  responses:
+    '200':
+      description: Success

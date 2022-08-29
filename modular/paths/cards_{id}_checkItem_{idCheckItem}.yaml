@@ -1,0 +1,76 @@
+parameters:
+  - name: id
+    in: path
+    description: The ID of the Card
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+  - name: idCheckItem
+    in: path
+    description: The ID of the checkitem
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get checkItem on a Card
+  description: Get a specific checkItem on a card
+  operationId: get-cards-id-checkitem-idcheckitem
+  parameters:
+    - name: fields
+      in: query
+      description: '`all` or a comma-separated list of `name,nameData,pos,state,type`'
+      required: false
+      schema:
+        type: string
+        default: name,nameData,pos,state
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+put:
+  tags: []
+  summary: Update a checkItem on a Card
+  description: Update an item in a checklist on a card.
+  operationId: put-cards-id-checkitem-idcheckitem
+  parameters:
+    - name: name
+      in: query
+      description: The new name for the checklist item
+      required: false
+      schema:
+        type: string
+    - name: state
+      in: query
+      description: 'One of: `complete`, `incomplete`'
+      required: false
+      schema:
+        type: string
+        enum:
+          - complete
+          - incomplete
+    - name: idChecklist
+      in: query
+      description: The ID of the checklist this item is in
+      required: false
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: pos
+      in: query
+      description: '`top`, `bottom`, or a positive float'
+      required: false
+      schema:
+        $ref: ../components/schemas/posStringOrNumber.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+delete:
+  tags: []
+  summary: Delete checkItem on a Card
+  description: Delete a checklist item
+  operationId: delete-cards-id-checkitem-idcheckitem
+  deprecated: false
+  responses:
+    '200':
+      description: Success

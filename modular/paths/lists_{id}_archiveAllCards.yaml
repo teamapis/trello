@@ -1,0 +1,16 @@
+post:
+  tags: []
+  summary: Archive all Cards in List
+  description: Archive all cards in a list
+  operationId: post-lists-id-archiveallcards
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the list
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success

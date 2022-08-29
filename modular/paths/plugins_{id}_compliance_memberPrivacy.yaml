@@ -1,0 +1,16 @@
+get:
+  tags: []
+  summary: Get Plugin's Member privacy compliance
+  description: ''
+  operationId: get-plugins-id-compliance-memberprivacy
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the Power-Up
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success

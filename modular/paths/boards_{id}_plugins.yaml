@@ -1,0 +1,30 @@
+get:
+  tags: []
+  summary: Get Power-Ups on a Board
+  description: List the Power-Ups on a board
+  operationId: get-board-id-plugins
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the board
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: filter
+      in: query
+      description: 'One of: `enabled` or `available`'
+      required: false
+      schema:
+        type: string
+        default: enabled
+        enum:
+          - enabled
+          - available
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Plugin.yaml

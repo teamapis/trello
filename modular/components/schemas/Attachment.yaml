@@ -1,0 +1,44 @@
+type: object
+properties:
+  id:
+    $ref: ./TrelloID.yaml
+    example: 5bc79d4206526d2279c1e6ea
+  bytes:
+    type: string
+    example: null
+    nullable: true
+  date:
+    type: string
+    format: date
+    example: '2018-10-17T19:10:14.808Z'
+  edgeColor:
+    type: string
+    $ref: ./Color.yaml
+    example: null
+    nullable: true
+  idMember:
+    type: string
+    $ref: ./TrelloID.yaml
+    example: 5bc79d4206526d2279c1e6eb
+  isUpload:
+    type: boolean
+    example: false
+  mimeType:
+    type: string
+    example: ''
+  name:
+    type: string
+    example: Deprecation Extension Notice
+  previews:
+    type: array
+    items:
+      type: string
+    example: []
+  url:
+    type: string
+    format: url
+    example: https://admin.typeform.com/form/RzExEM/share#/link
+  pos:
+    type: number
+    format: float
+    example: 1638

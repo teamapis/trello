@@ -1,0 +1,22 @@
+put:
+  tags: []
+  summary: Archive or unarchive a list
+  description: Archive or unarchive a list
+  operationId: put-lists-id-closed
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the list
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: value
+      in: query
+      description: Set to true to close (archive) the list
+      required: false
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success

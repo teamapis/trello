@@ -1,0 +1,130 @@
+parameters:
+  - name: id
+    in: path
+    description: The ID or name of the Organization
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get an Organization
+  description: ''
+  operationId: get-organizations-id
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Organization.yaml
+put:
+  tags: []
+  summary: Update an Organization
+  description: Update an organization
+  operationId: put-organizations-id
+  parameters:
+    - name: name
+      in: query
+      description: >-
+        A new name for the organization. At least 3 lowercase letters,
+        underscores, and numbers. Must be unique
+      required: false
+      schema:
+        type: string
+    - name: displayName
+      in: query
+      description: >-
+        A new displayName for the organization. Must be at least 1 character
+        long and not begin or end with a space.
+      required: false
+      schema:
+        type: string
+    - name: desc
+      in: query
+      description: A new description for the organization
+      required: false
+      schema:
+        type: string
+    - name: website
+      in: query
+      description: A URL starting with `http://`, `https://`, or `null`
+      required: false
+      schema:
+        type: string
+    - name: prefs/associatedDomain
+      in: query
+      description: The Google Apps domain to link this org to.
+      required: false
+      schema:
+        type: string
+    - name: prefs/externalMembersDisabled
+      in: query
+      description: >-
+        Whether non-workspace members can be added to boards inside the
+        Workspace
+      required: false
+      schema:
+        type: boolean
+    - name: prefs/googleAppsVersion
+      in: query
+      description: '`1` or `2`'
+      required: false
+      schema:
+        type: integer
+        format: int32
+    - name: prefs/boardVisibilityRestrict/org
+      in: query
+      description: >-
+        Who on the Workspace can make Workspace visible boards. One of `admin`,
+        `none`, `org`
+      required: false
+      schema:
+        type: string
+    - name: prefs/boardVisibilityRestrict/private
+      in: query
+      description: 'Who can make private boards. One of: `admin`, `none`, `org`'
+      required: false
+      schema:
+        type: string
+    - name: prefs/boardVisibilityRestrict/public
+      in: query
+      description: >-
+        Who on the Workspace can make public boards. One of: `admin`, `none`,
+        `org`
+      required: false
+      schema:
+        type: string
+    - name: prefs/orgInviteRestrict
+      in: query
+      description: >-
+        An email address with optional wildcard characters. (E.g.
+        `subdomain.*.trello.com`)
+      required: false
+      schema:
+        type: string
+    - name: prefs/permissionLevel
+      in: query
+      description: >-
+        Whether the Workspace page is publicly visible. One of: `private`,
+        `public`
+      required: false
+      schema:
+        type: string
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Organization.yaml
+delete:
+  tags: []
+  summary: Delete an Organization
+  description: Delete an Organization
+  operationId: delete-organizations-id
+  deprecated: false
+  responses:
+    '200':
+      description: Success

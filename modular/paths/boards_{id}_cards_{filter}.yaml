@@ -1,0 +1,28 @@
+get:
+  tags: []
+  summary: Get filtered Cards on a Board
+  description: Get the Cards on a Board that match a given filter.
+  operationId: get-boards-id-cards-filter
+  parameters:
+    - name: id
+      in: path
+      description: ID of the Board
+      required: true
+      schema:
+        type: string
+    - name: filter
+      in: path
+      description: 'Valid Values: all, closed, none, open, visible.'
+      required: true
+      schema:
+        type: string
+        enum:
+          - all
+          - closed
+          - none
+          - open
+          - visible
+  deprecated: false
+  responses:
+    '200':
+      description: Success

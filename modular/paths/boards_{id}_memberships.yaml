@@ -1,0 +1,68 @@
+get:
+  tags: []
+  summary: Get Memberships of a Board
+  description: Get information about the memberships users have to the board.
+  operationId: get-boards-id-memberships
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the board
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: filter
+      in: query
+      description: One of `admins`, `all`, `none`, `normal`
+      required: false
+      schema:
+        type: string
+        default: all
+        enum:
+          - admins
+          - all
+          - none
+          - normal
+    - name: activity
+      in: query
+      description: Works for premium organizations only.
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: orgMemberType
+      in: query
+      description: >-
+        Shows the type of member to the org the user is. For instance, an org
+        admin will have a `orgMemberType` of `admin`.
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: member
+      in: query
+      description: >-
+        Determines whether to include a [nested member
+        object](/cloud/trello/guides/rest-api/nested-resources/).
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: member_fields
+      in: query
+      description: >-
+        Fields to show if `member=true`. Valid values: [nested member resource
+        fields](/cloud/trello/guides/rest-api/nested-resources/).
+      required: false
+      style: form
+      explode: false
+      schema:
+        $ref: ../components/schemas/MemberFields.yaml
+        default: fullname,username
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Memberships.yaml

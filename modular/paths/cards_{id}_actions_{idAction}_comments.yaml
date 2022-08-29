@@ -1,0 +1,38 @@
+parameters:
+  - name: id
+    in: path
+    description: The ID of the Card
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+  - name: idAction
+    in: path
+    description: The ID of the comment action to update
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+put:
+  tags: []
+  summary: Update Comment Action on a Card
+  description: Update an existing comment
+  operationId: put-cards-id-actions-idaction-comments
+  parameters:
+    - name: text
+      in: query
+      description: The new text for the comment
+      required: true
+      schema:
+        type: string
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+delete:
+  tags: []
+  summary: Delete a comment on a Card
+  description: Delete a comment
+  operationId: delete-cards-id-actions-id-comments
+  deprecated: false
+  responses:
+    '200':
+      description: Success

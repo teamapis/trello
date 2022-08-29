@@ -1,0 +1,60 @@
+parameters:
+  - name: id
+    in: path
+    description: The ID of the Label
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get a Label
+  description: Get information about a single Label.
+  operationId: get-labels-id
+  parameters:
+    - name: fields
+      in: query
+      description: >-
+        all or a comma-separated list of
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      schema:
+        type: string
+        default: all
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+put:
+  tags: []
+  summary: Update a Label
+  description: Update a label by ID.
+  operationId: put-labels-id
+  parameters:
+    - name: name
+      in: query
+      description: The new name for the label
+      required: false
+      schema:
+        type: string
+    - name: color
+      in: query
+      description: >-
+        The new color for the label. See:
+        [fields](/cloud/trello/guides/rest-api/object-definitions/) for color
+        options
+      required: false
+      schema:
+        $ref: ../components/schemas/Color.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+delete:
+  tags: []
+  summary: Delete a Label
+  description: Delete a label by ID.
+  operationId: delete-labels-id
+  deprecated: false
+  responses:
+    '200':
+      description: Success

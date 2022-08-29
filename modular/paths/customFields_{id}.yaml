@@ -1,0 +1,56 @@
+parameters:
+  - name: id
+    in: path
+    description: ID of the Custom Field.
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get a Custom Field
+  description: ''
+  operationId: get-customfields-id
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/CustomField.yaml
+put:
+  tags: []
+  summary: Update a Custom Field definition
+  description: Update a Custom Field definition.
+  operationId: put-customfields-id
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: The name of the Custom Field
+            pos:
+              $ref: ../components/schemas/posStringOrNumber.yaml
+            display/cardFront:
+              type: boolean
+              description: Whether to display this custom field on the front of cards
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/CustomField.yaml
+delete:
+  tags: []
+  summary: Delete a Custom Field definition
+  description: Delete a Custom Field from a board.
+  operationId: delete-customfields-id
+  deprecated: false
+  responses:
+    '200':
+      description: Success

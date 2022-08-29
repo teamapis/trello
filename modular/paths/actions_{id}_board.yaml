@@ -1,0 +1,26 @@
+get:
+  tags: []
+  summary: Get the Board for an Action
+  description: Get the Board for an Action
+  operationId: get-actions-id-board
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the action
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: fields
+      in: query
+      description: '`all` or a comma-separated list of board fields'
+      required: false
+      schema:
+        $ref: ../components/schemas/BoardFields.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Board.yaml

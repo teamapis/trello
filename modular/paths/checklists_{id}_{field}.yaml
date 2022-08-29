@@ -1,0 +1,44 @@
+parameters:
+  - name: id
+    in: path
+    description: ID of a checklist.
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+  - name: field
+    in: path
+    description: Field to update.
+    required: true
+    schema:
+      type: string
+      enum:
+        - name
+        - pos
+get:
+  tags: []
+  summary: Get field on a Checklist
+  description: ''
+  operationId: get-checklists-id-field
+  responses:
+    '200':
+      description: Success
+put:
+  tags: []
+  summary: Update field on a Checklist
+  description: ''
+  operationId: put-checklists-id-field
+  parameters:
+    - name: value
+      in: query
+      description: >-
+        The value to change the checklist name to. Should be a string of length
+        1 to 16384.
+      required: true
+      schema:
+        oneOf:
+          - $ref: ../components/schemas/posStringOrNumber.yaml
+          - $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success

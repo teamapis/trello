@@ -1,0 +1,27 @@
+get:
+  tags: []
+  summary: Get the Organization of an Action
+  description: Get the Organization of an Action
+  operationId: get-actions-id-organization
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the action
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: fields
+      in: query
+      description: '`all` or a comma-separated list of organization fields'
+      required: false
+      schema:
+        $ref: ../components/schemas/OrganizationFields.yaml
+        default: all
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Organization.yaml

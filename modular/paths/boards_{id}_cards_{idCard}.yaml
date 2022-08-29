@@ -1,0 +1,22 @@
+get:
+  tags: []
+  summary: Get a Card on a Board
+  description: Get a single Card on a Board.
+  operationId: get-boards-id-cards-idcard
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the board
+      required: true
+      schema:
+        type: string
+    - name: idCard
+      in: path
+      description: The id the card to retrieve.
+      required: true
+      schema:
+        type: string
+  deprecated: false
+  responses:
+    '200':
+      description: Success

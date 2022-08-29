@@ -1,0 +1,56 @@
+type: object
+properties:
+  id:
+    $ref: ./TrelloID.yaml
+    example: 5ab10be237846c43015f108e
+  idModel:
+    type: string
+    example: 586e8f681d4fe9b06a928307
+  modelType:
+    type: string
+    enum:
+      - card
+      - board
+      - member
+    example: board
+  fieldGroup:
+    type: string
+    example: f6177ba6839d6fff0f73922c1cea105e793fda8a1433d466104dacc0b7c56955
+  display:
+    type: object
+    properties:
+      cardFront:
+        type: boolean
+        example: true
+      name:
+        type: string
+        example: Priority 🏔
+      pos:
+        type: string
+        example: 98304,
+      options:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              $ref: ./TrelloID.yaml
+              example: 5ab10be237846c43015f1091
+            idCustomField:
+              $ref: ./TrelloID.yaml
+              example: 5ab10be237846c43015f108e
+            value:
+              type: object
+              properties:
+                text:
+                  type: string
+                  example: High
+            color:
+              type: string
+              example: red
+            pos:
+              type: number
+              example: 16384
+  type:
+    type: string
+    example: list

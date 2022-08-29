@@ -1,0 +1,60 @@
+type: object
+properties:
+  permissionLevel:
+    type: string
+    enum:
+      - org
+      - board
+  hideVotes:
+    type: boolean
+  voting:
+    type: string
+    enum:
+      - disabled
+      - enabled
+  comments:
+    type: string
+  invitations:
+    enum:
+      - admins
+      - members
+  selfJoin:
+    type: boolean
+  cardCovers:
+    type: boolean
+  isTemplate:
+    type: boolean
+  cardAging:
+    $ref: ./CardAging.yaml
+  calendarFeedEnabled:
+    type: boolean
+  background:
+    $ref: ./TrelloID.yaml
+  backgroundImage:
+    type: string
+    format: uri
+  backgroundImageScaled:
+    type: array
+    items:
+      $ref: ./ImageDescriptor.yaml
+  backgroundTile:
+    type: boolean
+  backgroundBrightness:
+    type: string
+    example: dark
+  backgroundBottomColor:
+    type: string
+    example: '#1e2e00'
+  backgroundTopColor:
+    type: string
+    example: '#ffffff'
+  canBePublic:
+    type: boolean
+  canBeEnterprise:
+    type: boolean
+  canBeOrg:
+    type: boolean
+  canBePrivate:
+    type: boolean
+  canInvite:
+    type: boolean

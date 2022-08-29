@@ -1,0 +1,48 @@
+parameters:
+  - name: idAction
+    in: path
+    description: The ID of the Action
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+  - name: id
+    in: path
+    description: The ID of the reaction
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get Action's Reaction
+  description: Get information for a reaction
+  operationId: get-actions-idaction-reactions-id
+  parameters:
+    - name: member
+      in: query
+      description: >-
+        Whether to load the member as a nested resource. See [Members Nested
+        Resource](/cloud/trello/guides/rest-api/nested-resources/#members-nested-resource)
+      required: false
+      schema:
+        type: boolean
+        default: true
+    - name: emoji
+      in: query
+      description: Whether to load the emoji as a nested resource.
+      required: false
+      schema:
+        type: boolean
+        default: true
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+delete:
+  tags: []
+  summary: Delete Action's Reaction
+  description: Deletes a reaction
+  operationId: delete-actions-idaction-reactions-id
+  deprecated: false
+  responses:
+    '200':
+      description: Success

@@ -1,0 +1,65 @@
+get:
+  tags: []
+  summary: Get the Members of an Organization
+  description: List the members in a Workspace
+  operationId: get-organizations-id-members
+  parameters:
+    - name: id
+      in: path
+      description: The ID or name of the Organization
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              oneOf:
+                - $ref: ../components/schemas/Member.yaml
+put:
+  tags: []
+  summary: Update an Organization's Members
+  description: ''
+  operationId: put-organizations-id-members
+  parameters:
+    - name: id
+      in: path
+      description: The ID or name of the organization
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: email
+      in: query
+      description: An email address
+      required: true
+      schema:
+        type: string
+        format: email
+    - name: fullName
+      in: query
+      description: >-
+        Name for the member, at least 1 character not beginning or ending with a
+        space
+      required: true
+      schema:
+        type: string
+        minLength: 1
+    - name: type
+      in: query
+      description: 'One of: `admin`, `normal`'
+      required: false
+      schema:
+        type: string
+        default: normal
+        enum:
+          - admin
+          - normal
+  deprecated: false
+  responses:
+    '200':
+      description: Success

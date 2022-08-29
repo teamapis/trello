@@ -1,0 +1,35 @@
+get:
+  tags: []
+  summary: Get Cards the Member is on
+  description: Gets the cards a member is on
+  operationId: get-members-id-cards
+  parameters:
+    - name: id
+      in: path
+      description: The ID or username of the member
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: filter
+      in: query
+      description: 'One of: `all`, `closed`, `none`, `open`, `visible`'
+      required: false
+      schema:
+        enum:
+          - all
+          - closed
+          - none
+          - open
+          - visible
+        type: string
+        default: visible
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Card.yaml

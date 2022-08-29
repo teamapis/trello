@@ -1,0 +1,31 @@
+put:
+  tags: []
+  summary: Update a field on a label
+  description: Update a field on a label.
+  operationId: put-labels-id-field
+  parameters:
+    - name: id
+      in: path
+      description: The id of the label
+      required: true
+      schema:
+        type: string
+    - name: field
+      in: path
+      description: The field on the Label to update.
+      required: true
+      schema:
+        type: string
+        enum:
+          - color
+          - name
+    - name: value
+      in: query
+      description: The new value for the field.
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+      required: true
+  deprecated: false
+  responses:
+    '200':
+      description: Success

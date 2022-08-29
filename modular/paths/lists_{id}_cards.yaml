@@ -1,0 +1,22 @@
+get:
+  tags: []
+  summary: Get Cards in a List
+  description: List the cards in a list
+  operationId: get-lists-id-cards
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the list
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Card.yaml

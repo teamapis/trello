@@ -1,0 +1,88 @@
+parameters:
+  - name: id
+    in: path
+    description: The ID of the Card
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get Attachments on a Card
+  description: List the attachments on a card
+  operationId: get-cards-id-attachments
+  parameters:
+    - name: fields
+      in: path
+      description: >-
+        `all` or a comma-separated list of attachment
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: true
+      schema:
+        type: string
+        default: all
+    - name: filter
+      in: path
+      description: Use `cover` to restrict to just the cover attachment
+      required: true
+      schema:
+        type: string
+        default: 'false'
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              oneOf:
+                - $ref: ../components/schemas/Attachment.yaml
+post:
+  tags: []
+  summary: Create Attachment On Card
+  description: Create an Attachment to a Card
+  operationId: post-cards-id-attachments
+  parameters:
+    - name: name
+      in: query
+      description: The name of the attachment. Max length 256.
+      required: false
+      schema:
+        type: string
+    - name: file
+      in: query
+      description: The file to attach, as multipart/form-data
+      required: false
+      schema:
+        type: string
+        format: binary
+    - name: mimeType
+      in: query
+      description: The mimeType of the attachment. Max length 256
+      required: false
+      schema:
+        type: string
+    - name: url
+      in: query
+      description: A URL to attach. Must start with `http://` or `https://`
+      required: false
+      schema:
+        type: string
+    - name: setCover
+      in: query
+      schema:
+        type: boolean
+        default: false
+      description: Determines whether to use the new attachment as a cover for the Card.
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              oneOf:
+                - $ref: ../components/schemas/Attachment.yaml

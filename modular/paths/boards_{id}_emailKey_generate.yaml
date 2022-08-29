@@ -1,0 +1,16 @@
+post:
+  tags: []
+  summary: Create a emailKey for a Board
+  description: ''
+  operationId: post-boards-id-emailkey-generate
+  parameters:
+    - name: id
+      in: path
+      description: The id of the board to update
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success

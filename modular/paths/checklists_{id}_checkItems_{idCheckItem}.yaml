@@ -1,0 +1,48 @@
+parameters:
+  - name: id
+    in: path
+    description: ID of a checklist.
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+  - name: idCheckItem
+    in: path
+    description: ID of the check item to retrieve.
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get a Checkitem on a Checklist
+  description: ''
+  operationId: get-checklists-id-checkitems-idcheckitem
+  parameters:
+    - name: fields
+      in: query
+      description: 'One of: `all`, `name`, `nameData`, `pos`, `state`, `type`.'
+      required: false
+      style: form
+      explode: false
+      schema:
+        type: string
+        default: name, nameData, pos, state
+        enum:
+          - all
+          - name
+          - nameData
+          - pos
+          - state
+          - type
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+delete:
+  tags: []
+  summary: Delete Checkitem from Checklist
+  description: Remove an item from a checklist
+  operationId: delete-checklists-id-checkitems-idcheckitem
+  deprecated: false
+  responses:
+    '200':
+      description: Success

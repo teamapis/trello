@@ -1,0 +1,13 @@
+type: object
+properties:
+  id:
+    $ref: ./TrelloID.yaml
+    example: 5900ac11ed55d6d2c355c5d6
+  url:
+    type: string
+    format: url
+    example: >-
+      https://trello-emoji.s3.amazonaws.com/5589c3ea49b40cedc28cf70e/b40d9925f4e75495104b5e560881d8e4/chorizo.png
+  name:
+    type: string
+    example: chorizo

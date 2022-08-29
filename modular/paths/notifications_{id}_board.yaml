@@ -1,0 +1,32 @@
+get:
+  tags: []
+  summary: Get the Board a Notification is on
+  description: Get the board a notification is associated with
+  operationId: get-notifications-id-board
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the notification
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of
+        board[fields](/cloud/trello/guides/rest-api/object-definitions/)
+      explode: false
+      style: form
+      required: false
+      schema:
+        $ref: ../components/schemas/BoardFields.yaml
+        default: all
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: ../components/schemas/Board.yaml

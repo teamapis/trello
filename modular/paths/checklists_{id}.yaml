@@ -1,0 +1,103 @@
+parameters:
+  - name: id
+    in: path
+    description: ID of a checklist.
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get a Checklist
+  description: ''
+  operationId: get-checklists-id
+  parameters:
+    - name: cards
+      in: query
+      description: >-
+        Valid values: `all`, `closed`, `none`, `open`, `visible`. Cards is a
+        nested resource. The additional query params available are documented at
+        [Cards Nested
+        Resource](/cloud/trello/guides/rest-api/nested-resources/#cards-nested-resource).
+      required: false
+      schema:
+        type: string
+        default: none
+        enum:
+          - all
+          - closed
+          - none
+          - open
+          - visible
+    - name: checkItems
+      in: query
+      description: 'The check items on the list to return. One of: `all`, `none`.'
+      required: false
+      schema:
+        type: string
+        enum:
+          - all
+          - none
+        default: all
+    - name: checkItem_fields
+      in: query
+      description: >-
+        The fields on the checkItem to return if checkItems are being returned.
+        `all` or a comma-separated list of: `name`, `nameData`, `pos`, `state`,
+        `type`
+      required: false
+      schema:
+        type: string
+        default: name, nameData, pos, state
+        enum:
+          - all
+          - name
+          - nameData
+          - pos
+          - state
+          - type
+    - name: fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of checklist
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      schema:
+        type: string
+        default: all
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+put:
+  tags: []
+  summary: Update a Checklist
+  description: Update an existing checklist.
+  operationId: put-checlists-id
+  parameters:
+    - name: name
+      in: query
+      description: Name of the new checklist being created. Should be length of 1 to 16384.
+      required: false
+      schema:
+        type: string
+    - name: pos
+      in: query
+      description: >-
+        Determines the position of the checklist on the card. One of: `top`,
+        `bottom`, or a positive number.
+      required: false
+      schema:
+        $ref: ../components/schemas/posStringOrNumber.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+delete:
+  tags: []
+  summary: Delete a Checklist
+  description: Delete a checklist
+  operationId: delete-checklists-id
+  deprecated: false
+  responses:
+    '200':
+      description: Success

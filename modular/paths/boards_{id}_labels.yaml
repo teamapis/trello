@@ -1,0 +1,62 @@
+get:
+  tags: []
+  summary: Get Labels on a Board
+  description: Get all of the Labels on a Board.
+  operationId: get-boards-id-labels
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the Board.
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: fields
+      in: query
+      description: The fields to be returned for the Labels.
+      required: false
+      schema:
+        $ref: ../components/schemas/Label.yaml
+    - name: limit
+      in: query
+      description: The number of Labels to be returned.
+      required: false
+      schema:
+        type: integer
+        format: int32
+        default: 50
+        minimum: 0
+        maximum: 1000
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+post:
+  tags: []
+  summary: Create a Label on a Board
+  description: Create a new Label on a Board.
+  operationId: post-boards-id-labels
+  parameters:
+    - name: id
+      in: path
+      description: The id of the board to update
+      required: true
+      schema:
+        type: string
+    - name: name
+      in: query
+      description: The name of the label to be created. 1 to 16384 characters long.
+      required: true
+      schema:
+        type: string
+    - name: color
+      in: query
+      description: >-
+        Sets the color of the new label. Valid values are a label color or
+        `null`.
+      required: true
+      schema:
+        type: string
+  deprecated: false
+  responses:
+    '200':
+      description: Success

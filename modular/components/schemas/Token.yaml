@@ -1,0 +1,24 @@
+type: object
+properties:
+  id:
+    $ref: ./TrelloID.yaml
+    example: 5da728c55235b443c5b97181
+  identifier:
+    type: string
+    example: App Name
+  idMember:
+    $ref: ./TrelloID.yaml
+    example: 5589c3ea49b40cedc28cf70e
+  dateCreated:
+    type: string
+    format: date-time
+    example: '2019-10-16T14:27:17.304Z'
+  dateExpires:
+    type: string
+    format: date-time
+    example: null
+    nullable: true
+  permissions:
+    type: array
+    items:
+      $ref: ./TokenPermission.yaml

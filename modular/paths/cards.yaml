@@ -1,0 +1,151 @@
+post:
+  tags: []
+  summary: Create a new Card
+  description: Create a new card
+  operationId: post-cards
+  parameters:
+    - name: name
+      in: query
+      description: The name for the card
+      required: false
+      schema:
+        type: string
+    - name: desc
+      in: query
+      description: The description for the card
+      required: false
+      schema:
+        type: string
+    - name: pos
+      in: query
+      description: The position of the new card. `top`, `bottom`, or a positive float
+      required: false
+      schema:
+        oneOf:
+          - type: string
+            enum:
+              - top
+              - bottom
+          - type: number
+            format: float
+            minimum: 0
+    - name: due
+      in: query
+      description: A due date for the card
+      required: false
+      schema:
+        type: string
+        format: date
+    - name: start
+      in: query
+      description: The start date of a card, or `null`
+      required: false
+      schema:
+        nullable: true
+        type: string
+        format: date
+    - name: dueComplete
+      in: query
+      required: false
+      schema:
+        type: boolean
+    - name: idList
+      in: query
+      description: The ID of the list the card should be created in
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: idMembers
+      in: query
+      description: Comma-separated list of member IDs to add to the card
+      required: false
+      schema:
+        type: array
+        items:
+          oneOf:
+            - $ref: ../components/schemas/TrelloID.yaml
+    - name: idLabels
+      in: query
+      description: Comma-separated list of label IDs to add to the card
+      required: false
+      schema:
+        type: array
+        items:
+          oneOf:
+            - $ref: ../components/schemas/TrelloID.yaml
+    - name: urlSource
+      in: query
+      description: A URL starting with `http://` or `https://`
+      required: false
+      schema:
+        type: string
+        format: url
+    - name: fileSource
+      in: query
+      description: ''
+      required: false
+      schema:
+        type: string
+        format: binary
+    - name: mimeType
+      in: query
+      description: The mimeType of the attachment. Max length 256
+      required: false
+      schema:
+        type: string
+    - name: idCardSource
+      in: query
+      description: The ID of a card to copy into the new card
+      required: false
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: keepFromSource
+      in: query
+      description: >-
+        If using `idCardSource` you can specify which properties to copy over.
+        `all` or comma-separated list of:
+        `attachments,checklists,customFields,comments,due,start,labels,members,start,stickers`
+      required: false
+      style: form
+      explode: false
+      schema:
+        type: string
+        default: all
+        enum:
+          - all
+          - attachments
+          - checklists
+          - comments
+          - customFields
+          - due
+          - start
+          - labels
+          - members
+          - start
+          - stickers
+    - name: address
+      in: query
+      description: For use with/by the Map View
+      required: false
+      schema:
+        type: string
+    - name: locationName
+      in: query
+      description: For use with/by the Map View
+      required: false
+      schema:
+        type: string
+    - name: coordinates
+      in: query
+      description: For use with/by the Map View. Should take the form latitude,longitude
+      required: false
+      schema:
+        type: string
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Card.yaml

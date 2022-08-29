@@ -1,0 +1,8 @@
+oneOf:
+  - type: string
+    enum:
+      - top
+      - bottom
+  - type: number
+    format: float
+    example: 1293.5

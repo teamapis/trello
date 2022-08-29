@@ -1,0 +1,29 @@
+get:
+  tags: []
+  summary: Get a field on a Member
+  description: Get a particular property of a member
+  operationId: get-members-id-field
+  parameters:
+    - name: id
+      in: path
+      description: The ID or username of the member
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: field
+      in: path
+      description: >-
+        One of the member
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: true
+      schema:
+        $ref: ../components/schemas/MemberFields.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: ../components/schemas/Member.yaml

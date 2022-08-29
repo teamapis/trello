@@ -1,0 +1,32 @@
+get:
+  tags: []
+  summary: Get the Card a Notification is on
+  description: Get the card a notification is associated with
+  operationId: get-notifications-id-card
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the notification
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: fields
+      in: query
+      explode: false
+      style: form
+      description: >-
+        `all` or a comma-separated list of card
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      schema:
+        $ref: ../components/schemas/CardFields.yaml
+        default: all
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: ../components/schemas/Card.yaml

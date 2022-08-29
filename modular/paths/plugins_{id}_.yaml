@@ -1,0 +1,40 @@
+get:
+  tags: []
+  summary: Get a Plugin
+  description: Get plugins
+  operationId: get-plugins-id
+  parameters:
+    - name: id
+      in: path
+      description: The ID or name of the organization
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Plugin.yaml
+put:
+  tags: []
+  summary: Update a Plugin
+  description: Update a Plugin
+  operationId: put-plugins-id
+  parameters:
+    - name: id
+      in: path
+      description: The ID or name of the organization
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Plugin.yaml

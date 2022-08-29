@@ -1,0 +1,8 @@
+type: object
+properties:
+  id:
+    $ref: ./TrelloID.yaml
+    example: 58dd6dcaf8b86744d3cb4cde
+  name:
+    type: string
+    example: My Collection

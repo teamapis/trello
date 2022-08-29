@@ -1,0 +1,31 @@
+parameters:
+  - name: id
+    in: path
+    description: ID of the customfielditem.
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+  - name: idCustomFieldOption
+    in: path
+    description: ID of the customfieldoption to retrieve.
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get Option of Custom Field dropdown
+  description: Retrieve a specific, existing Option on a given dropdown-type Custom Field
+  operationId: get-customfields-options-idcustomfieldoption
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+delete:
+  tags: []
+  summary: Delete Option of Custom Field dropdown
+  description: Delete an option from a Custom Field dropdown.
+  operationId: delete-customfields-options-idcustomfieldoption
+  deprecated: false
+  responses:
+    '200':
+      description: Success

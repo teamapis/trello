@@ -1,0 +1,59 @@
+type: object
+properties:
+  idAction:
+    $ref: ./TrelloID.yaml
+    example: 5dced8665015383ed5ca248c
+  type:
+    type: string
+    example: addOrganizationToEnterprise
+  date:
+    type: string
+    format: date
+    example: '2018-04-26T17:03:25.155Z'
+  memberCreator:
+    type: object
+    properties:
+      id:
+        $ref: ./TrelloID.yaml
+        example: 5bc79d4206526d2279c1e6ea
+      username:
+        type: string
+        example: bobloblaw
+      fullName:
+        type: string
+        example: Bob Loblaw (Trello)
+  organization:
+    type: object
+    properties:
+      enterpriseJoinRequest:
+        type: object
+        nullable: true
+        properties:
+          idEnterprise:
+            $ref: ./TrelloID.yaml
+            example: 617ac9070293e6612650e0ca
+          idMember:
+            $ref: ./TrelloID.yaml
+            example: 5bc79d4206526d2279c1e6ea
+          date:
+            type: string
+            format: date
+            example: '2018-04-26T17:03:25.155Z'
+      id:
+        $ref: ./TrelloID.yaml
+        example: 617ac9070293e6612650e0ca
+      name:
+        type: string
+        example: organization name
+  member:
+    type: object
+    properties:
+      id:
+        $ref: ./TrelloID.yaml
+        example: 5bc79d4206526d2279c1e6ea
+      username:
+        type: string
+        example: bentleycook
+      fullName:
+        type: string
+        example: Bentley Cook

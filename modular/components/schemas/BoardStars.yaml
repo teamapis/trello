@@ -1,0 +1,11 @@
+type: object
+properties:
+  id:
+    $ref: ./TrelloID.yaml
+    example: 585063850027165010be15a8
+  idBoard:
+    $ref: ./TrelloID.yaml
+    example: 57f7df684f1ca8c2877162e0
+  pos:
+    type: integer
+    example: 32768

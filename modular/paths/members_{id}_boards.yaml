@@ -1,0 +1,80 @@
+get:
+  tags: []
+  summary: Get Boards that Member belongs to
+  description: Lists the boards that the user is a member of.
+  operationId: get-members-id-boards
+  parameters:
+    - name: id
+      in: path
+      description: The ID or username of the member
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: filter
+      in: query
+      description: >-
+        `all` or a comma-separated list of: `closed`, `members`, `open`,
+        `organization`, `public`, `starred`
+      required: false
+      schema:
+        enum:
+          - all
+          - closed
+          - members
+          - open
+          - organization
+          - public
+          - starred
+        type: string
+        default: all
+    - name: fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of board
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      schema:
+        $ref: ../components/schemas/BoardFields.yaml
+        default: all
+    - name: lists
+      in: query
+      description: >-
+        Which lists to include with the boards. One of: `all`, `closed`, `none`,
+        `open`
+      required: false
+      schema:
+        enum:
+          - all
+          - closed
+          - none
+          - open
+        type: string
+        default: none
+    - name: organization
+      in: query
+      description: Whether to include the Organization object with the Boards
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: organization_fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of organization
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      explode: false
+      style: form
+      required: false
+      schema:
+        $ref: ../components/schemas/OrganizationFields.yaml
+        default: name,displayName
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Board.yaml

@@ -1,0 +1,45 @@
+put:
+  summary: Update a Member's licensed status
+  description: >-
+    This endpoint is used to update whether the provided Member should use one
+    of the Enterprise's available licenses or not.
+  operationId: put-enterprises-id-members-idmember-licensed
+  parameters:
+    - name: id
+      in: path
+      description: ID of the Enterprise.
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: idMember
+      in: path
+      description: The ID of the Member
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: value
+      in: query
+      description: >-
+        Boolean value to determine whether the user should be given an
+        Enterprise license (true) or not (false).
+      required: true
+      schema:
+        type: boolean
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Member.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '404':
+      $ref: ../components/responses/NotFound.yaml
+    default:
+      description: Unexpected error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Error.yaml

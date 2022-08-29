@@ -1,0 +1,38 @@
+put:
+  tags: []
+  summary: Update Checkitem on Checklist on Card
+  description: Update an item in a checklist on a card.
+  operationId: put-cards-idcard-checklist-idchecklist-checkitem-idcheckitem
+  parameters:
+    - name: idCard
+      in: path
+      description: The ID of the Card
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: idCheckItem
+      in: path
+      description: The ID of the checklist item to update
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: pos
+      in: query
+      description: '`top`, `bottom`, or a positive float'
+      required: false
+      schema:
+        $ref: ../components/schemas/posStringOrNumber.yaml
+    - name: idChecklist
+      in: path
+      description: The ID of the item to update.
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/CheckItem.yaml

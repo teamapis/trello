@@ -1,0 +1,59 @@
+post:
+  tags: []
+  summary: Create a new Custom Field on a Board
+  description: Create a new Custom Field on a board.
+  operationId: post-customfields
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - idModel
+            - modelType
+            - name
+            - type
+            - pos
+          properties:
+            idModel:
+              $ref: ../components/schemas/TrelloID.yaml
+              description: >-
+                The ID of the model for which the Custom Field is being defined.
+                This should always be the ID of a board.
+            modelType:
+              enum:
+                - board
+              type: string
+              description: >-
+                The type of model that the Custom Field is being defined on.
+                This should always be `board`.
+            name:
+              type: string
+              description: The name of the Custom Field
+            type:
+              enum:
+                - checkbox
+                - list
+                - number
+                - text
+                - date
+              type: string
+              description: The type of Custom Field to create.
+            options:
+              type: string
+              description: 'If the type is `checkbox` '
+            pos:
+              $ref: ../components/schemas/posStringOrNumber.yaml
+              description: ''
+            display_cardFront:
+              type: boolean
+              description: Whether this Custom Field should be shown on the front of Cards
+              default: true
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/CustomField.yaml

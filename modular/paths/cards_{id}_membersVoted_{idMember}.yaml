@@ -1,0 +1,22 @@
+delete:
+  tags: []
+  summary: Remove a Member's Vote on a Card
+  description: Remove a member's vote from a card
+  operationId: delete-cards-id-membersvoted-idmember
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the Card
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: idMember
+      in: path
+      description: The ID of the member whose vote to remove
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success

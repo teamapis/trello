@@ -1,0 +1,66 @@
+parameters:
+  - name: token
+    in: path
+    description: ''
+    required: true
+    schema:
+      type: string
+  - name: idWebhook
+    in: path
+    description: ID of the [Webhooks](ref:webhooks) to retrieve.
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get a Webhook belonging to a Token
+  description: Retrieve a webhook created with a Token.
+  operationId: get-tokens-token-webhooks-idwebhook
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Webhook.yaml
+delete:
+  tags: []
+  summary: Delete a Webhook created by Token
+  description: Delete a webhook created with given token.
+  operationId: delete-tokens-token-webhooks-idwebhook
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+put:
+  tags: []
+  summary: Update a Webhook created by Token
+  description: Update a Webhook created by Token
+  operationId: tokenstokenwebhooks-1
+  parameters:
+    - name: description
+      in: query
+      description: >-
+        A description to be displayed when retrieving information about the
+        webhook.
+      required: false
+      schema:
+        type: string
+    - name: callbackURL
+      in: query
+      description: The URL that the webhook should `POST` information to.
+      required: false
+      schema:
+        type: string
+        format: url
+    - name: idModel
+      in: query
+      description: ID of the object that the webhook is on.
+      required: false
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success

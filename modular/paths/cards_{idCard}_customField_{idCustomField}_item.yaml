@@ -1,0 +1,55 @@
+put:
+  tags: []
+  summary: Update Custom Field item on Card
+  description: >-
+    Setting, updating, and removing the value for a Custom Field on a card. For
+    more details on updating custom fields check out the [Getting Started With
+    Custom
+    Fields](/cloud/trello/guides/rest-api/getting-started-with-custom-fields/)
+  operationId: put-cards-idcard-customfield-idcustomfield-item
+  parameters:
+    - name: idCard
+      in: path
+      description: ID of the card that the Custom Field value should be set/updated for
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: idCustomField
+      in: path
+      description: ID of the Custom Field on the card.
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  requestBody:
+    content:
+      application/json:
+        schema:
+          oneOf:
+            - type: object
+              properties:
+                value:
+                  type: object
+                  description: >-
+                    An object containing the key and value to set for the card's
+                    Custom Field value. The key used to set the value should
+                    match the type of Custom Field defined.
+                  properties:
+                    text:
+                      type: string
+                    checked:
+                      type: boolean
+                    date:
+                      type: string
+                      format: date-time
+                      example: '2018-03-13T16:00:00.000Z'
+                    number:
+                      type: number
+            - type: object
+              properties:
+                idValue:
+                  $ref: ../components/schemas/TrelloID.yaml
+                  description: The ID of the option for the list type Custom Field
+  deprecated: false
+  responses:
+    '200':
+      description: Success

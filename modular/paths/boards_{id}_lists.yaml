@@ -1,0 +1,82 @@
+parameters:
+  - name: id
+    in: path
+    description: The ID of the board
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get Lists on a Board
+  description: Get the Lists on a Board
+  operationId: get-boards-id-lists
+  parameters:
+    - name: cards
+      in: query
+      description: Filter to apply to Cards.
+      required: false
+      schema:
+        $ref: ../components/schemas/ViewFilter.yaml
+    - name: card_fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of card
+        [fields](/cloud/trello/guides/rest-api/object-definitions/#card-object)
+      required: false
+      schema:
+        type: string
+        default: all
+    - name: filter
+      in: query
+      description: Filter to apply to Lists
+      required: false
+      schema:
+        $ref: ../components/schemas/ViewFilter.yaml
+    - name: fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of list
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      schema:
+        type: string
+        default: all
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/TrelloList.yaml
+post:
+  tags: []
+  summary: Create a List on a Board
+  description: Create a new List on a Board.
+  operationId: post-boards-id-lists
+  parameters:
+    - name: name
+      in: query
+      description: The name of the list to be created. 1 to 16384 characters long.
+      required: true
+      schema:
+        type: string
+    - name: pos
+      in: query
+      description: >-
+        Determines the position of the list. Valid values: `top`, `bottom`, or a
+        positive number.
+      required: false
+      schema:
+        type: string
+        default: top
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/TrelloList.yaml

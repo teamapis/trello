@@ -1,0 +1,25 @@
+put:
+  tags: []
+  summary: Update emailPosition Pref on a Board
+  description: Update emailPosition Pref on a Board
+  operationId: put-boards-id-myprefs-emailposition
+  parameters:
+    - name: id
+      in: path
+      description: The id of the board to update
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: value
+      in: query
+      description: 'Valid values: bottom, top. Determines the position of the email address.'
+      required: true
+      schema:
+        type: string
+        enum:
+          - bottom
+          - top
+  deprecated: false
+  responses:
+    '200':
+      description: Success

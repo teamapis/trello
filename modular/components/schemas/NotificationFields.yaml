@@ -1,0 +1,13 @@
+type: string
+enum:
+  - id
+  - unread
+  - type
+  - date
+  - dateRead
+  - data
+  - card
+  - board
+  - idMemberCreator
+  - idAction
+  - reactions

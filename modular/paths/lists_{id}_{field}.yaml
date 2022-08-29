@@ -1,0 +1,43 @@
+put:
+  tags: []
+  summary: Update a field on a List
+  description: Rename a list
+  operationId: put-lists-id-field
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the list
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: field
+      in: path
+      description: The field on the List to be updated
+      required: true
+      schema:
+        type: string
+        enum:
+          - name
+          - pos
+          - subscribed
+    - name: value
+      in: query
+      description: The new value for the field
+      required: false
+      schema:
+        oneOf:
+          - type: string
+            description: The new name for the List
+          - type: number
+            format: float
+            description: The new position for the List
+          - type: string
+            enum:
+              - top
+              - bottom
+            description: The new position for the List
+          - type: boolean
+  deprecated: false
+  responses:
+    '200':
+      description: Success

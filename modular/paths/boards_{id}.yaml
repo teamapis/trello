@@ -1,0 +1,334 @@
+parameters:
+  - name: id
+    in: path
+    description: ''
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get a Board
+  description: Request a single board.
+  operationId: get-boards-id
+  parameters:
+    - name: actions
+      in: query
+      description: >-
+        This is a nested resource. Read more about actions as nested resources
+        [here](/cloud/trello/guides/rest-api/nested-resources/).
+      required: false
+      schema:
+        type: string
+        default: all
+    - name: boardStars
+      in: query
+      description: 'Valid values are one of: `mine` or `none`.'
+      required: false
+      schema:
+        type: string
+        default: none
+    - name: cards
+      in: query
+      description: >-
+        This is a nested resource. Read more about cards as nested resources
+        [here](/cloud/trello/guides/rest-api/nested-resources/).
+      required: false
+      schema:
+        type: string
+        default: none
+    - name: card_pluginData
+      in: query
+      description: Use with the `cards` param to include card pluginData with the response
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: checklists
+      in: query
+      description: >-
+        This is a nested resource. Read more about checklists as nested
+        resources [here](/cloud/trello/guides/rest-api/nested-resources/).
+      required: false
+      schema:
+        type: string
+        default: none
+    - name: customFields
+      in: query
+      description: >-
+        This is a nested resource. Read more about custom fields as nested
+        resources [here](#custom-fields-nested-resource).
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: fields
+      in: query
+      description: >-
+        The fields of the board to be included in the response. Valid values:
+        all or a comma-separated list of: closed, dateLastActivity,
+        dateLastView, desc, descData, idMemberCreator, idOrganization,
+        invitations, invited, labelNames, memberships, name, pinned, powerUps,
+        prefs, shortLink, shortUrl, starred, subscribed, url
+      required: false
+      schema:
+        type: string
+        default: >-
+          name,desc,descData,closed,idOrganization,pinned,url,shortUrl,prefs,labelNames
+    - name: labels
+      in: query
+      description: >-
+        This is a nested resource. Read more about labels as nested resources
+        [here](/cloud/trello/guides/rest-api/nested-resources/).
+      required: false
+      schema:
+        type: string
+    - name: lists
+      in: query
+      description: >-
+        This is a nested resource. Read more about lists as nested resources
+        [here](/cloud/trello/guides/rest-api/nested-resources/).
+      required: false
+      schema:
+        type: string
+        default: open
+    - name: members
+      in: query
+      description: >-
+        This is a nested resource. Read more about members as nested resources
+        [here](/cloud/trello/guides/rest-api/nested-resources/).
+      required: false
+      schema:
+        type: string
+        default: none
+    - name: memberships
+      in: query
+      description: >-
+        This is a nested resource. Read more about memberships as nested
+        resources [here](/cloud/trello/guides/rest-api/nested-resources/).
+      required: false
+      schema:
+        type: string
+        default: none
+    - name: pluginData
+      in: query
+      description: >-
+        Determines whether the pluginData for this board should be returned.
+        Valid values: true or false.
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: organization
+      in: query
+      description: >-
+        This is a nested resource. Read more about organizations as nested
+        resources [here](/cloud/trello/guides/rest-api/nested-resources/).
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: organization_pluginData
+      in: query
+      description: >-
+        Use with the `organization` param to include organization pluginData
+        with the response
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: myPrefs
+      in: query
+      description: ''
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: tags
+      in: query
+      description: >-
+        Also known as collections, tags, refer to the collection(s) that a Board
+        belongs to.
+      required: false
+      schema:
+        type: boolean
+        default: false
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Board.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '404':
+      $ref: ../components/responses/NotFound.yaml
+    default:
+      description: Unexpected error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Error.yaml
+put:
+  tags: []
+  summary: Update a Board
+  description: Update an existing board by id
+  operationId: put-boards-id
+  parameters:
+    - name: name
+      in: query
+      description: The new name for the board. 1 to 16384 characters long.
+      required: false
+      schema:
+        type: string
+    - name: desc
+      in: query
+      description: A new description for the board, 0 to 16384 characters long
+      required: false
+      schema:
+        type: string
+    - name: closed
+      in: query
+      description: Whether the board is closed
+      required: false
+      schema:
+        type: boolean
+    - name: subscribed
+      in: query
+      description: Whether the acting user is subscribed to the board
+      required: false
+      explode: false
+      style: form
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: idOrganization
+      in: query
+      description: The id of the Workspace the board should be moved to
+      required: false
+      schema:
+        type: string
+    - name: prefs/permissionLevel
+      in: query
+      description: 'One of: org, private, public'
+      required: false
+      schema:
+        type: string
+    - name: prefs/selfJoin
+      in: query
+      description: Whether Workspace members can join the board themselves
+      required: false
+      schema:
+        type: boolean
+    - name: prefs/cardCovers
+      in: query
+      description: Whether card covers should be displayed on this board
+      required: false
+      schema:
+        type: boolean
+    - name: prefs/hideVotes
+      in: query
+      description: >-
+        Determines whether the Voting Power-Up should hide who voted on cards or
+        not.
+      required: false
+      schema:
+        type: boolean
+    - name: prefs/invitations
+      in: query
+      description: 'Who can invite people to this board. One of: admins, members'
+      required: false
+      schema:
+        type: string
+    - name: prefs/voting
+      in: query
+      description: >-
+        Who can vote on this board. One of disabled, members, observers, org,
+        public
+      required: false
+      schema:
+        type: string
+    - name: prefs/comments
+      in: query
+      description: >-
+        Who can comment on cards on this board. One of: disabled, members,
+        observers, org, public
+      required: false
+      schema:
+        type: string
+    - name: prefs/background
+      in: query
+      description: >-
+        The id of a custom background or one of: blue, orange, green, red,
+        purple, pink, lime, sky, grey
+      required: false
+      schema:
+        type: string
+    - name: prefs/cardAging
+      in: query
+      description: 'One of: pirate, regular'
+      required: false
+      schema:
+        type: string
+    - name: prefs/calendarFeedEnabled
+      in: query
+      description: Determines whether the calendar feed is enabled or not.
+      required: false
+      schema:
+        type: boolean
+    - name: labelNames/green
+      in: query
+      description: Name for the green label. 1 to 16384 characters long
+      required: false
+      schema:
+        type: string
+    - name: labelNames/yellow
+      in: query
+      description: Name for the yellow label. 1 to 16384 characters long
+      required: false
+      schema:
+        type: string
+    - name: labelNames/orange
+      in: query
+      description: Name for the orange label. 1 to 16384 characters long
+      required: false
+      schema:
+        type: string
+    - name: labelNames/red
+      in: query
+      description: Name for the red label. 1 to 16384 characters long
+      required: false
+      schema:
+        type: string
+    - name: labelNames/purple
+      in: query
+      description: Name for the purple label. 1 to 16384 characters long
+      required: false
+      schema:
+        type: string
+    - name: labelNames/blue
+      in: query
+      description: Name for the blue label. 1 to 16384 characters long
+      required: false
+      schema:
+        type: string
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+delete:
+  tags: []
+  summary: Delete a Board
+  description: Delete a board.
+  operationId: delete-boards-id
+  parameters:
+    - name: id
+      in: path
+      description: The id of the board to delete
+      required: true
+      schema:
+        type: string
+  deprecated: false
+  responses:
+    '200':
+      description: Success

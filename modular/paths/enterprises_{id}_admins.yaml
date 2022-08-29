@@ -1,0 +1,37 @@
+get:
+  tags: []
+  summary: Get Enterprise admin Members
+  description: Get an enterprise's admin members.
+  operationId: get-enterprises-id-admins
+  parameters:
+    - name: id
+      in: path
+      description: ID of the enterprise to retrieve.
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: fields
+      in: query
+      description: Any valid value that the [nested member field resource]() accepts.
+      required: false
+      schema:
+        type: string
+        default: fullName, userName
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/EnterpriseAdmin.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '404':
+      $ref: ../components/responses/NotFound.yaml
+    default:
+      description: Unexpected error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Error.yaml

@@ -1,0 +1,382 @@
+openapi: 3.0.0
+info:
+  title: Trello REST API
+  version: 0.0.1
+servers:
+  - url: https://api.trello.com/1
+components:
+  securitySchemes:
+    APIKey:
+      type: apiKey
+      in: query
+      name: key
+    APIToken:
+      in: query
+      name: token
+      type: apiKey
+security:
+  - APIKey: []
+    APIToken: []
+paths:
+  /actions/{id}:
+    $ref: paths/actions_{id}.yaml
+  /actions/{id}/{field}:
+    $ref: paths/actions_{id}_{field}.yaml
+  /actions/{id}/board:
+    $ref: paths/actions_{id}_board.yaml
+  /actions/{id}/card:
+    $ref: paths/actions_{id}_card.yaml
+  /actions/{id}/list:
+    $ref: paths/actions_{id}_list.yaml
+  /actions/{id}/member:
+    $ref: paths/actions_{id}_member.yaml
+  /actions/{id}/memberCreator:
+    $ref: paths/actions_{id}_memberCreator.yaml
+  /actions/{id}/organization:
+    $ref: paths/actions_{id}_organization.yaml
+  /actions/{id}/text:
+    $ref: paths/actions_{id}_text.yaml
+  /actions/{idAction}/reactions:
+    $ref: paths/actions_{idAction}_reactions.yaml
+  /actions/{idAction}/reactions/{id}:
+    $ref: paths/actions_{idAction}_reactions_{id}.yaml
+  /actions/{idAction}/reactionsSummary:
+    $ref: paths/actions_{idAction}_reactionsSummary.yaml
+  /applications/{key}/compliance:
+    $ref: paths/applications_{key}_compliance.yaml
+  /batch:
+    $ref: paths/batch.yaml
+  /boards/{id}/memberships:
+    $ref: paths/boards_{id}_memberships.yaml
+  /boards/{id}:
+    $ref: paths/boards_{id}.yaml
+  /boards/{id}/{field}:
+    $ref: paths/boards_{id}_{field}.yaml
+  /boards/{boardId}/actions:
+    $ref: paths/boards_{boardId}_actions.yaml
+  /boards/{id}/cards/{idCard}:
+    $ref: paths/boards_{id}_cards_{idCard}.yaml
+  /boards/{boardId}/boardStars:
+    $ref: paths/boards_{boardId}_boardStars.yaml
+  /boards/{id}/checklists:
+    $ref: paths/boards_{id}_checklists.yaml
+  /boards/{id}/cards:
+    $ref: paths/boards_{id}_cards.yaml
+  /boards/{id}/cards/{filter}:
+    $ref: paths/boards_{id}_cards_{filter}.yaml
+  /boards/{id}/customFields:
+    $ref: paths/boards_{id}_customFields.yaml
+  /boards/{id}/labels:
+    $ref: paths/boards_{id}_labels.yaml
+  /boards/{id}/lists:
+    $ref: paths/boards_{id}_lists.yaml
+  /boards/{id}/lists/{filter}:
+    $ref: paths/boards_{id}_lists_{filter}.yaml
+  /boards/{id}/members:
+    $ref: paths/boards_{id}_members.yaml
+  /boards/{id}/members/{idMember}:
+    $ref: paths/boards_{id}_members_{idMember}.yaml
+  /boards/{id}/memberships/{idMembership}:
+    $ref: paths/boards_{id}_memberships_{idMembership}.yaml
+  /boards/{id}/myPrefs/emailPosition:
+    $ref: paths/boards_{id}_myPrefs_emailPosition.yaml
+  /boards/{id}/myPrefs/idEmailList:
+    $ref: paths/boards_{id}_myPrefs_idEmailList.yaml
+  /boards/{id}/myPrefs/showListGuide:
+    $ref: paths/boards_{id}_myPrefs_showListGuide.yaml
+  /boards/{id}/myPrefs/showSidebar:
+    $ref: paths/boards_{id}_myPrefs_showSidebar.yaml
+  /boards/{id}/myPrefs/showSidebarActivity:
+    $ref: paths/boards_{id}_myPrefs_showSidebarActivity.yaml
+  /boards/{id}/myPrefs/showSidebarBoardActions:
+    $ref: paths/boards_{id}_myPrefs_showSidebarBoardActions.yaml
+  /boards/{id}/myPrefs/showSidebarMembers:
+    $ref: paths/boards_{id}_myPrefs_showSidebarMembers.yaml
+  /boards/:
+    $ref: paths/boards_.yaml
+  /boards/{id}/calendarKey/generate:
+    $ref: paths/boards_{id}_calendarKey_generate.yaml
+  /boards/{id}/emailKey/generate:
+    $ref: paths/boards_{id}_emailKey_generate.yaml
+  /boards/{id}/idTags:
+    $ref: paths/boards_{id}_idTags.yaml
+  /boards/{id}/markedAsViewed:
+    $ref: paths/boards_{id}_markedAsViewed.yaml
+  /boards/{id}/boardPlugins:
+    $ref: paths/boards_{id}_boardPlugins.yaml
+  /boards/{id}/boardPlugins/{idPlugin}:
+    $ref: paths/boards_{id}_boardPlugins_{idPlugin}.yaml
+  /boards/{id}/plugins:
+    $ref: paths/boards_{id}_plugins.yaml
+  /cards:
+    $ref: paths/cards.yaml
+  /cards/{id}:
+    $ref: paths/cards_{id}.yaml
+  /cards/{id}/{field}:
+    $ref: paths/cards_{id}_{field}.yaml
+  /cards/{id}/actions:
+    $ref: paths/cards_{id}_actions.yaml
+  /cards/{id}/attachments:
+    $ref: paths/cards_{id}_attachments.yaml
+  /cards/{id}/attachments/{idAttachment}:
+    $ref: paths/cards_{id}_attachments_{idAttachment}.yaml
+  /cards/{id}/board:
+    $ref: paths/cards_{id}_board.yaml
+  /cards/{id}/checkItemStates:
+    $ref: paths/cards_{id}_checkItemStates.yaml
+  /cards/{id}/checklists:
+    $ref: paths/cards_{id}_checklists.yaml
+  /cards/{id}/checkItem/{idCheckItem}:
+    $ref: paths/cards_{id}_checkItem_{idCheckItem}.yaml
+  /cards/{id}/list:
+    $ref: paths/cards_{id}_list.yaml
+  /cards/{id}/members:
+    $ref: paths/cards_{id}_members.yaml
+  /cards/{id}/membersVoted:
+    $ref: paths/cards_{id}_membersVoted.yaml
+  /cards/{id}/pluginData:
+    $ref: paths/cards_{id}_pluginData.yaml
+  /cards/{id}/stickers:
+    $ref: paths/cards_{id}_stickers.yaml
+  /cards/{id}/stickers/{idSticker}:
+    $ref: paths/cards_{id}_stickers_{idSticker}.yaml
+  /cards/{id}/actions/{idAction}/comments:
+    $ref: paths/cards_{id}_actions_{idAction}_comments.yaml
+  /cards/{idCard}/customField/{idCustomField}/item:
+    $ref: paths/cards_{idCard}_customField_{idCustomField}_item.yaml
+  /cards/{id}/customFieldItems:
+    $ref: paths/cards_{id}_customFieldItems.yaml
+  /cards/{id}/actions/comments:
+    $ref: paths/cards_{id}_actions_comments.yaml
+  /cards/{id}/idLabels:
+    $ref: paths/cards_{id}_idLabels.yaml
+  /cards/{id}/idMembers:
+    $ref: paths/cards_{id}_idMembers.yaml
+  /cards/{id}/labels:
+    $ref: paths/cards_{id}_labels.yaml
+  /cards/{id}/markAssociatedNotificationsRead:
+    $ref: paths/cards_{id}_markAssociatedNotificationsRead.yaml
+  /cards/{id}/idLabels/{idLabel}:
+    $ref: paths/cards_{id}_idLabels_{idLabel}.yaml
+  /cards/{id}/idMembers/{idMember}:
+    $ref: paths/cards_{id}_idMembers_{idMember}.yaml
+  /cards/{id}/membersVoted/{idMember}:
+    $ref: paths/cards_{id}_membersVoted_{idMember}.yaml
+  /cards/{idCard}/checklist/{idChecklist}/checkItem/{idCheckItem}:
+    $ref: paths/cards_{idCard}_checklist_{idChecklist}_checkItem_{idCheckItem}.yaml
+  /cards/{id}/checklists/{idChecklist}:
+    $ref: paths/cards_{id}_checklists_{idChecklist}.yaml
+  /checklists:
+    $ref: paths/checklists.yaml
+  /checklists/{id}:
+    $ref: paths/checklists_{id}.yaml
+  /checklists/{id}/{field}:
+    $ref: paths/checklists_{id}_{field}.yaml
+  /checklists/{id}/board:
+    $ref: paths/checklists_{id}_board.yaml
+  /checklists/{id}/cards:
+    $ref: paths/checklists_{id}_cards.yaml
+  /checklists/{id}/checkItems:
+    $ref: paths/checklists_{id}_checkItems.yaml
+  /checklists/{id}/checkItems/{idCheckItem}:
+    $ref: paths/checklists_{id}_checkItems_{idCheckItem}.yaml
+  /customFields:
+    $ref: paths/customFields.yaml
+  /customFields/{id}:
+    $ref: paths/customFields_{id}.yaml
+  /customFields/{id}/options:
+    $ref: paths/customFields_{id}_options.yaml
+  /customFields/{id}/options/{idCustomFieldOption}:
+    $ref: paths/customFields_{id}_options_{idCustomFieldOption}.yaml
+  /emoji:
+    $ref: paths/emoji.yaml
+  /enterprises/{id}:
+    $ref: paths/enterprises_{id}.yaml
+  /enterprises/{id}/auditlog:
+    $ref: paths/enterprises_{id}_auditlog.yaml
+  /enterprises/{id}/admins:
+    $ref: paths/enterprises_{id}_admins.yaml
+  /enterprises/{id}/signupUrl:
+    $ref: paths/enterprises_{id}_signupUrl.yaml
+  /enterprises/{id}/members:
+    $ref: paths/enterprises_{id}_members.yaml
+  /enterprises/{id}/members/{idMember}:
+    $ref: paths/enterprises_{id}_members_{idMember}.yaml
+  /enterprises/{id}/transferrable/organization/{idOrganization}:
+    $ref: paths/enterprises_{id}_transferrable_organization_{idOrganization}.yaml
+  /enterprises/{id}/claimableOrganizations:
+    $ref: paths/enterprises_{id}_claimableOrganizations.yaml
+  /enterprises/{id}/pendingOrganizations:
+    $ref: paths/enterprises_{id}_pendingOrganizations.yaml
+  /enterprises/{id}/tokens:
+    $ref: paths/enterprises_{id}_tokens.yaml
+  /enterprises/{id}/organizations:
+    $ref: paths/enterprises_{id}_organizations.yaml
+  /enterprises/{id}/members/{idMember}/licensed:
+    $ref: paths/enterprises_{id}_members_{idMember}_licensed.yaml
+  /enterprises/{id}/members/{idMember}/deactivated:
+    $ref: paths/enterprises_{id}_members_{idMember}_deactivated.yaml
+  /enterprises/{id}/admins/{idMember}:
+    $ref: paths/enterprises_{id}_admins_{idMember}.yaml
+  /enterprises/{id}/organizations/{idOrg}:
+    $ref: paths/enterprises_{id}_organizations_{idOrg}.yaml
+  /labels/{id}:
+    $ref: paths/labels_{id}.yaml
+  /labels/{id}/{field}:
+    $ref: paths/labels_{id}_{field}.yaml
+  /labels:
+    $ref: paths/labels.yaml
+  /lists/{id}:
+    $ref: paths/lists_{id}.yaml
+  /lists:
+    $ref: paths/lists.yaml
+  /lists/{id}/archiveAllCards:
+    $ref: paths/lists_{id}_archiveAllCards.yaml
+  /lists/{id}/moveAllCards:
+    $ref: paths/lists_{id}_moveAllCards.yaml
+  /lists/{id}/closed:
+    $ref: paths/lists_{id}_closed.yaml
+  /lists/{id}/idBoard:
+    $ref: paths/lists_{id}_idBoard.yaml
+  /lists/{id}/{field}:
+    $ref: paths/lists_{id}_{field}.yaml
+  /lists/{id}/actions:
+    $ref: paths/lists_{id}_actions.yaml
+  /lists/{id}/board:
+    $ref: paths/lists_{id}_board.yaml
+  /lists/{id}/cards:
+    $ref: paths/lists_{id}_cards.yaml
+  /members/{id}:
+    $ref: paths/members_{id}.yaml
+  /members/{id}/{field}:
+    $ref: paths/members_{id}_{field}.yaml
+  /members/{id}/actions:
+    $ref: paths/members_{id}_actions.yaml
+  /members/{id}/boardBackgrounds:
+    $ref: paths/members_{id}_boardBackgrounds.yaml
+  /members/{id}/boardBackgrounds/{idBackground}:
+    $ref: paths/members_{id}_boardBackgrounds_{idBackground}.yaml
+  /members/{id}/boardStars:
+    $ref: paths/members_{id}_boardStars.yaml
+  /members/{id}/boardStars/{idStar}:
+    $ref: paths/members_{id}_boardStars_{idStar}.yaml
+  /members/{id}/boards:
+    $ref: paths/members_{id}_boards.yaml
+  /members/{id}/boardsInvited:
+    $ref: paths/members_{id}_boardsInvited.yaml
+  /members/{id}/cards:
+    $ref: paths/members_{id}_cards.yaml
+  /members/{id}/customBoardBackgrounds:
+    $ref: paths/members_{id}_customBoardBackgrounds.yaml
+  /members/{id}/customBoardBackgrounds/{idBackground}:
+    $ref: paths/members_{id}_customBoardBackgrounds_{idBackground}.yaml
+  /members/{id}/customEmoji:
+    $ref: paths/members_{id}_customEmoji.yaml
+  /members/{id}/customEmoji/{idEmoji}:
+    $ref: paths/members_{id}_customEmoji_{idEmoji}.yaml
+  /members/{id}/customStickers:
+    $ref: paths/members_{id}_customStickers.yaml
+  /members/{id}/customStickers/{idSticker}:
+    $ref: paths/members_{id}_customStickers_{idSticker}.yaml
+  /members/{id}/notifications:
+    $ref: paths/members_{id}_notifications.yaml
+  /members/{id}/organizations:
+    $ref: paths/members_{id}_organizations.yaml
+  /members/{id}/organizationsInvited:
+    $ref: paths/members_{id}_organizationsInvited.yaml
+  /members/{id}/savedSearches:
+    $ref: paths/members_{id}_savedSearches.yaml
+  /members/{id}/savedSearches/{idSearch}:
+    $ref: paths/members_{id}_savedSearches_{idSearch}.yaml
+  /members/{id}/tokens:
+    $ref: paths/members_{id}_tokens.yaml
+  /members/{id}/avatar:
+    $ref: paths/members_{id}_avatar.yaml
+  /members/{id}/oneTimeMessagesDismissed:
+    $ref: paths/members_{id}_oneTimeMessagesDismissed.yaml
+  /notifications/{id}:
+    $ref: paths/notifications_{id}.yaml
+  /notifications/{id}/{field}:
+    $ref: paths/notifications_{id}_{field}.yaml
+  /notifications/all/read:
+    $ref: paths/notifications_all_read.yaml
+  /notifications/{id}/unread:
+    $ref: paths/notifications_{id}_unread.yaml
+  /notifications/{id}/board:
+    $ref: paths/notifications_{id}_board.yaml
+  /notifications/{id}/card:
+    $ref: paths/notifications_{id}_card.yaml
+  /notifications/{id}/list:
+    $ref: paths/notifications_{id}_list.yaml
+  /notifications/{id}/member:
+    $ref: paths/notifications_{id}_member.yaml
+  /notifications/{id}/memberCreator:
+    $ref: paths/notifications_{id}_memberCreator.yaml
+  /notifications/{id}/organization:
+    $ref: paths/notifications_{id}_organization.yaml
+  /organizations:
+    $ref: paths/organizations.yaml
+  /organizations/{id}:
+    $ref: paths/organizations_{id}.yaml
+  /organizations/{id}/{field}:
+    $ref: paths/organizations_{id}_{field}.yaml
+  /organizations/{id}/actions:
+    $ref: paths/organizations_{id}_actions.yaml
+  /organizations/{id}/boards:
+    $ref: paths/organizations_{id}_boards.yaml
+  /organizations/{id}/exports:
+    $ref: paths/organizations_{id}_exports.yaml
+  /organizations/{id}/members:
+    $ref: paths/organizations_{id}_members.yaml
+  /organizations/{id}/memberships:
+    $ref: paths/organizations_{id}_memberships.yaml
+  /organizations/{id}/memberships/{idMembership}:
+    $ref: paths/organizations_{id}_memberships_{idMembership}.yaml
+  /organizations/{id}/pluginData:
+    $ref: paths/organizations_{id}_pluginData.yaml
+  /organizations/{id}/tags:
+    $ref: paths/organizations_{id}_tags.yaml
+  /organizations/{id}/members/{idMember}:
+    $ref: paths/organizations_{id}_members_{idMember}.yaml
+  /organizations/{id}/members/{idMember}/deactivated:
+    $ref: paths/organizations_{id}_members_{idMember}_deactivated.yaml
+  /organizations/{id}/logo:
+    $ref: paths/organizations_{id}_logo.yaml
+  /organizations/{id}/members/{idMember}/all:
+    $ref: paths/organizations_{id}_members_{idMember}_all.yaml
+  /organizations/{id}/prefs/associatedDomain:
+    $ref: paths/organizations_{id}_prefs_associatedDomain.yaml
+  /organizations/{id}/prefs/orgInviteRestrict:
+    $ref: paths/organizations_{id}_prefs_orgInviteRestrict.yaml
+  /organizations/{id}/tags/{idTag}:
+    $ref: paths/organizations_{id}_tags_{idTag}.yaml
+  /organizations/{id}/newBillableGuests/{idBoard}:
+    $ref: paths/organizations_{id}_newBillableGuests_{idBoard}.yaml
+  /plugins/{id}/:
+    $ref: paths/plugins_{id}_.yaml
+  /plugins/{idPlugin}/listing:
+    $ref: paths/plugins_{idPlugin}_listing.yaml
+  /plugins/{id}/compliance/memberPrivacy:
+    $ref: paths/plugins_{id}_compliance_memberPrivacy.yaml
+  /plugins/{idPlugin}/listings/{idListing}:
+    $ref: paths/plugins_{idPlugin}_listings_{idListing}.yaml
+  /search:
+    $ref: paths/search.yaml
+  /search/members/:
+    $ref: paths/search_members_.yaml
+  /tokens/{token}:
+    $ref: paths/tokens_{token}.yaml
+  /tokens/{token}/member:
+    $ref: paths/tokens_{token}_member.yaml
+  /tokens/{token}/webhooks:
+    $ref: paths/tokens_{token}_webhooks.yaml
+  /tokens/{token}/webhooks/{idWebhook}:
+    $ref: paths/tokens_{token}_webhooks_{idWebhook}.yaml
+  /tokens/{token}/:
+    $ref: paths/tokens_{token}_.yaml
+  /webhooks/:
+    $ref: paths/webhooks_.yaml
+  /webhooks/{id}:
+    $ref: paths/webhooks_{id}.yaml
+  /webhooks/{id}/{field}:
+    $ref: paths/webhooks_{id}_{field}.yaml

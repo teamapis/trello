@@ -1,0 +1,6 @@
+type: string
+enum:
+  - all
+  - closed
+  - none
+  - open

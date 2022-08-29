@@ -1,0 +1,25 @@
+get:
+  tags: []
+  summary: Get the Board the Card is on
+  description: Get the board a card is on
+  operationId: get-cards-id-board
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the Card
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of board
+        [fields](/cloud/trello/guides/rest-api/object-definitions/#board-object)
+      required: false
+      schema:
+        type: string
+        default: all
+  deprecated: false
+  responses:
+    '200':
+      description: Success

@@ -1,0 +1,193 @@
+type: object
+properties:
+  id:
+    $ref: ./TrelloID.yaml
+  address:
+    type: string
+    nullable: true
+  badges:
+    type: object
+    properties:
+      attachmentsByType:
+        type: object
+        properties:
+          trello:
+            type: object
+            properties:
+              board:
+                type: number
+              card:
+                type: number
+      location:
+        type: boolean
+      votes:
+        type: integer
+      viewingMemberVoted:
+        type: boolean
+        example: false
+      subscribed:
+        type: boolean
+        example: false
+      fogbugz:
+        type: string
+      checkItems:
+        type: integer
+        example: 0
+      checkItemsChecked:
+        type: integer
+        example: 0
+      comments:
+        type: integer
+        example: 0
+      attachments:
+        type: integer
+        example: 0
+      description:
+        type: boolean
+      due:
+        type: string
+        format: date
+        nullable: true
+      start:
+        type: string
+        format: date
+        nullable: true
+      dueComplete:
+        type: boolean
+  checkItemStates:
+    type: array
+    items:
+      oneOf:
+        - type: string
+  closed:
+    type: boolean
+  coordinates:
+    type: string
+    nullable: true
+  creationMethod:
+    type: string
+    nullable: true
+  dateLastActivity:
+    type: string
+    format: date-time
+    example: '2019-09-16T16:19:17.156Z'
+  desc:
+    type: string
+    example: |-
+      👋Hey there,
+
+      Trello's Platform team uses this board to keep developers up-to-date.
+  descData:
+    type: object
+    properties:
+      emoji:
+        type: object
+  due:
+    type: string
+    format: date
+    nullable: true
+  dueReminder:
+    type: string
+    nullable: true
+  email:
+    type: string
+    format: email
+    example: >-
+      bentleycook+2kea95u7kchsvqnxkwe+2q0byi6qv4pt9uc7q5m+25qyyohtzg@boards.trello.com
+  idBoard:
+    type: string
+    $ref: ./TrelloID.yaml
+    example: 5abbe4b7ddc1b351ef961414
+  idChecklists:
+    type: array
+    items:
+      oneOf:
+        - $ref: ./Checklist.yaml
+        - $ref: ./TrelloID.yaml
+  idLabels:
+    type: array
+    items:
+      oneOf:
+        - $ref: ./Label.yaml
+        - $ref: ./TrelloID.yaml
+  idList:
+    type: string
+    $ref: ./TrelloID.yaml
+    example: 5abbe4b7ddc1b351ef961415
+  idMembers:
+    type: array
+    items:
+      oneOf:
+        - $ref: ./TrelloID.yaml
+  idMembersVoted:
+    type: array
+    items:
+      oneOf:
+        - $ref: ./TrelloID.yaml
+  idShort:
+    type: integer
+  idAttachmentCover:
+    type: string
+    $ref: ./TrelloID.yaml
+    example: 5abbe4b7ddc1b351ef961415
+    nullable: true
+  labels:
+    type: array
+    items:
+      oneOf:
+        - $ref: ./TrelloID.yaml
+  limits:
+    type: object
+    $ref: ./Limits.yaml
+  locationName:
+    type: string
+    nullable: true
+  manualCoverAttachment:
+    type: boolean
+    example: false
+  name:
+    type: string
+    example: 👋 What? Why? How?
+  pos:
+    type: number
+    format: float
+    example: 65535
+  shortLink:
+    type: string
+    example: H0TZyzbK
+  shortUrl:
+    type: string
+    format: url
+    example: https://trello.com/c/H0TZyzbK
+  subscribed:
+    type: boolean
+    example: false
+  url:
+    type: string
+    format: url
+    example: https://trello.com/c/H0TZyzbK/4-%F0%9F%91%8B-what-why-how
+  cover:
+    type: object
+    properties:
+      idAttachment:
+        type: string
+        $ref: ./TrelloID.yaml
+        nullable: true
+      color:
+        $ref: ./Color.yaml
+        nullable: true
+      idUploadedBackground:
+        type: boolean
+        nullable: true
+      size:
+        type: string
+        enum:
+          - normal
+      brightness:
+        type: string
+        enum:
+          - light
+          - dark
+      isTemplate:
+        type: boolean
+        example: false

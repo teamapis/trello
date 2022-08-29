@@ -1,0 +1,27 @@
+get:
+  tags: []
+  summary: Get the Member Creator of an Action
+  description: Get the Member who created the Action
+  operationId: get-actions-id-membercreator
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the Action
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: fields
+      in: query
+      description: '`all` or a comma-separated list of member fields'
+      required: false
+      schema:
+        $ref: ../components/schemas/MemberFields.yaml
+        default: all
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Member.yaml

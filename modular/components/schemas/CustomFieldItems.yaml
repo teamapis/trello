@@ -1,0 +1,23 @@
+type: object
+properties:
+  id:
+    $ref: ./TrelloID.yaml
+  value:
+    type: object
+    properties:
+      checked:
+        type: string
+        example: 'true'
+  idCustomField:
+    $ref: ./TrelloID.yaml
+    example: 5b080fd8017bd1653b5480fa
+  idModel:
+    $ref: ./TrelloID.yaml
+    example: 5b080ff194611b41aaaa9570
+  modelType:
+    type: string
+    enum:
+      - card
+      - board
+      - member
+    example: card

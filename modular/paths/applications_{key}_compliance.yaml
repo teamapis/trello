@@ -1,0 +1,15 @@
+parameters:
+  - name: key
+    in: path
+    required: true
+    schema:
+      type: string
+get:
+  tags: []
+  summary: Get Application's compliance data
+  description: ''
+  operationId: applications-key-compliance
+  deprecated: false
+  responses:
+    '200':
+      description: Success

@@ -1,0 +1,37 @@
+post:
+  tags: []
+  summary: Mark all Notifications as read
+  description: Mark all notifications as read
+  operationId: post-notifications-all-read
+  parameters:
+    - name: read
+      in: query
+      description: >-
+        Boolean to specify whether to mark as read or unread (defaults to
+        `true`, marking as read)
+      required: false
+      schema:
+        type: boolean
+        default: true
+    - name: ids
+      in: query
+      explode: false
+      style: form
+      description: >-
+        A comma-seperated list of IDs. Allows specifying an array of
+        notification IDs to change the read state for. This will become useful
+        as we add grouping of notifications to the UI, with a single button to
+        mark all notifications in the group as read/unread.
+      schema:
+        type: array
+        items:
+          $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: ../components/schemas/Notification.yaml

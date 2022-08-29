@@ -1,0 +1,371 @@
+parameters:
+  - name: id
+    in: path
+    description: The ID of the Card
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get a Card
+  description: Get a card by its ID
+  operationId: get-cards-id
+  parameters:
+    - name: fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of
+        [fields](/cloud/trello/guides/rest-api/object-definitions/).
+        **Defaults**: `badges, checkItemStates, closed, dateLastActivity, desc,
+        descData, due, start, email, idBoard, idChecklists, idLabels, idList,
+        idMembers, idShort, idAttachmentCover, manualCoverAttachment, labels,
+        name, pos, shortUrl, url`
+      required: false
+      schema:
+        type: string
+    - name: actions
+      in: query
+      description: >-
+        See the [Actions Nested
+        Resource](/cloud/trello/guides/rest-api/nested-resources/#actions-nested-resource)
+      required: false
+      schema:
+        type: string
+    - name: attachments
+      in: query
+      description: '`true`, `false`, or `cover`'
+      required: false
+      schema:
+        type: string
+        oneOf:
+          - type: string
+            enum:
+              - cover
+          - type: boolean
+        default: false
+    - name: attachment_fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of attachment
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      schema:
+        type: string
+        default: all
+    - name: members
+      in: query
+      description: Whether to return member objects for members on the card
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: member_fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of member
+        [fields](/cloud/trello/guides/rest-api/object-definitions/).
+        **Defaults**: `avatarHash, fullName, initials, username`
+      required: false
+      schema:
+        type: string
+    - name: membersVoted
+      in: query
+      description: Whether to return member objects for members who voted on the card
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: memberVoted_fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of member
+        [fields](/cloud/trello/guides/rest-api/object-definitions/).
+        **Defaults**: `avatarHash, fullName, initials, username`
+      required: false
+      schema:
+        type: string
+    - name: checkItemStates
+      in: query
+      description: ''
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: checklists
+      in: query
+      description: Whether to return the checklists on the card. `all` or `none`
+      required: false
+      schema:
+        type: string
+        default: none
+    - name: checklist_fields
+      in: query
+      description: '`all` or a comma-separated list of `idBoard,idCard,name,pos`'
+      required: false
+      schema:
+        type: string
+        default: all
+    - name: board
+      in: query
+      description: Whether to return the board object the card is on
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: board_fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of board
+        [fields](/cloud/trello/guides/rest-api/object-definitions/#board-object).
+        **Defaults**: `name, desc, descData, closed, idOrganization, pinned,
+        url, prefs`
+      required: false
+      schema:
+        type: string
+    - name: list
+      in: query
+      description: >-
+        See the [Lists Nested
+        Resource](/cloud/trello/guides/rest-api/nested-resources/)
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: pluginData
+      in: query
+      description: Whether to include pluginData on the card with the response
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: stickers
+      in: query
+      description: Whether to include sticker models with the response
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: sticker_fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of sticker
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      schema:
+        type: string
+        default: all
+    - name: customFieldItems
+      in: query
+      description: Whether to include the customFieldItems
+      required: false
+      schema:
+        type: boolean
+        default: false
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Card.yaml
+put:
+  tags: []
+  summary: Update a Card
+  description: Update a card
+  operationId: put-cards-id
+  parameters:
+    - name: name
+      in: query
+      description: The new name for the card
+      required: false
+      schema:
+        type: string
+    - name: desc
+      in: query
+      description: The new description for the card
+      required: false
+      schema:
+        type: string
+    - name: closed
+      in: query
+      description: 'Whether the card should be archived (closed: true)'
+      required: false
+      schema:
+        type: boolean
+    - name: idMembers
+      in: query
+      description: Comma-separated list of member IDs
+      required: false
+      explode: false
+      style: form
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: idAttachmentCover
+      in: query
+      description: >-
+        The ID of the image attachment the card should use as its cover, or null
+        for none
+      required: false
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: idList
+      in: query
+      description: The ID of the list the card should be in
+      required: false
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: idLabels
+      in: query
+      description: Comma-separated list of label IDs
+      required: false
+      explode: false
+      style: form
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: idBoard
+      in: query
+      description: The ID of the board the card should be on
+      required: false
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: pos
+      in: query
+      description: >-
+        The position of the card in its list. `top`, `bottom`, or a positive
+        float
+      required: false
+      schema:
+        oneOf:
+          - type: string
+            enum:
+              - top
+              - bottom
+          - type: number
+            format: float
+    - name: due
+      in: query
+      description: When the card is due, or `null`
+      required: false
+      schema:
+        nullable: true
+        type: string
+        format: date
+    - name: start
+      in: query
+      description: The start date of a card, or `null`
+      required: false
+      schema:
+        nullable: true
+        type: string
+        format: date
+    - name: dueComplete
+      in: query
+      description: Whether the due date should be marked complete
+      required: false
+      schema:
+        type: boolean
+    - name: subscribed
+      in: query
+      description: Whether the member is should be subscribed to the card
+      required: false
+      schema:
+        type: boolean
+    - name: address
+      in: query
+      description: For use with/by the Map View
+      required: false
+      schema:
+        type: string
+    - name: locationName
+      in: query
+      description: For use with/by the Map View
+      required: false
+      schema:
+        type: string
+    - name: coordinates
+      in: query
+      description: For use with/by the Map View. Should be latitude,longitude
+      required: false
+      schema:
+        type: string
+    - name: cover
+      in: query
+      description: |-
+        Updates the card's cover
+
+        | Option | Values | About |
+         |--------|--------|-------|
+         | color | `pink`, `yellow`, `lime`, `blue`, `black`, `orange`, `red`, `purple`, `sky`, `green` | Makes the cover a solid color . |
+         | brightness | `dark`, `light` | Determines whether the text on the cover should be dark or light.
+         | url | An unsplash URL: https://images.unsplash.com | Used if making an image the cover. Only Unsplash URLs work.
+         | idAttachment | ID of an attachment on the card | Used if setting an attached image as the cover. |
+         | size | `normal`, `full` | Determines whether to show the card name on the cover, or below it. |
+         
+         `brightness` can be sent alongside any of the other parameters, but all of the other parameters are mutually exclusive; you can not have the cover be a `color` and an `idAttachment` at the same time. 
+         
+         On the brightness options, setting it to light will make the text on the card cover dark:
+         ![](/cloud/trello/images/rest/cards/cover-brightness-dark.png)
+         
+         And vice versa, setting it to dark will make the text on the card cover light: 
+         ![](/cloud/trello/images/rest/cards/cover-brightness-light.png) 
+      required: false
+      schema:
+        type: object
+        properties:
+          value:
+            type: object
+            description: |-
+              An object containing information regarding the card's cover 
+               `brightness` can be sent alongside any of the other parameters, but all of the other parameters are mutually exclusive; you can not have the cover be a color and an `idAttachment` at the same time.
+            properties:
+              color:
+                type: string
+                enum:
+                  - pink
+                  - yellow
+                  - lime
+                  - blue
+                  - black
+                  - orange
+                  - red
+                  - purple
+                  - sky
+                  - green
+                description: >-
+                  One of: `pink, yellow, lime, blue, black, orange, red, purple,
+                  sky, green`
+                example: pink
+              brightness:
+                type: string
+                enum:
+                  - dark
+                  - light
+                description: >-
+                  Determines whether the text on the cover should be dark or
+                  light. Setting it to `light` will make the text on the card
+                  cover dark. And vice versa, setting it to dark will make the
+                  text on the card cover light
+              url:
+                type: string
+                format: url
+                description: >-
+                  Used if making an image the cover. Only Unsplash URLs
+                  (https://images.unsplash.com/) work.
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Card.yaml
+delete:
+  tags: []
+  summary: Delete a Card
+  description: Delete a Card
+  operationId: delete-cards-id
+  deprecated: false
+  responses:
+    '200':
+      description: Success

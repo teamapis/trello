@@ -1,0 +1,54 @@
+parameters:
+  - name: id
+    in: path
+    description: The ID or username of the member
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get Member's saved searched
+  description: List the saved searches of a Member
+  operationId: get-members-id-savedsearches
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/SavedSearch.yaml
+post:
+  tags: []
+  summary: Create saved Search for Member
+  description: Create a saved search
+  operationId: post-members-id-savedsearches
+  parameters:
+    - name: name
+      in: query
+      description: The name for the saved search
+      required: true
+      schema:
+        type: string
+    - name: query
+      in: query
+      description: The search query
+      required: true
+      schema:
+        type: string
+    - name: pos
+      in: query
+      description: The position of the saved search. `top`, `bottom`, or a positive float.
+      required: true
+      schema:
+        $ref: ../components/schemas/posStringOrNumber.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/SavedSearch.yaml

@@ -1,0 +1,67 @@
+parameters:
+  - name: id
+    in: path
+    description: The ID or username of the member
+    required: true
+    schema:
+      oneOf:
+        - $ref: ../components/schemas/TrelloID.yaml
+        - type: string
+  - name: idBackground
+    in: path
+    description: The ID of the custom background
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get custom Board Background of Member
+  description: Get a specific custom board background
+  operationId: get-members-id-customboardbackgrounds-idbackground
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BoardBackground.yaml
+put:
+  tags: []
+  summary: Update custom Board Background of Member
+  description: Update a specific custom board background
+  operationId: put-members-id-customboardbackgrounds-idbackground
+  parameters:
+    - name: brightness
+      in: query
+      description: 'One of: `dark`, `light`, `unknown`'
+      required: false
+      schema:
+        enum:
+          - dark
+          - light
+          - unknown
+        type: string
+    - name: tile
+      in: query
+      description: Whether to tile the background
+      required: false
+      schema:
+        type: boolean
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BoardBackground.yaml
+delete:
+  tags: []
+  summary: Delete custom Board Background of Member
+  description: Delete a specific custom board background
+  operationId: delete-members-id-customboardbackgrounds-idbackground
+  deprecated: false
+  responses:
+    '200':
+      description: Success

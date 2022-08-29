@@ -1,0 +1,24 @@
+type: object
+properties:
+  id:
+    description: The ID of the label.
+    type: string
+    $ref: ./TrelloID.yaml
+  idBoard:
+    type: string
+    description: The ID of the board the label is on.
+    $ref: ./TrelloID.yaml
+    example: 5abbe4b7ddc1b351ef961414
+  name:
+    type: string
+    description: The name displayed for the label.
+    example: Overdue
+    nullable: true
+    minLength: 0
+    maxLength: 16384
+  color:
+    type: string
+    $ref: ./Color.yaml
+    description: >-
+      The color of the label. Null means no color and the label will not be
+      shown on the front of Cards.

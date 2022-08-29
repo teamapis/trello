@@ -1,0 +1,43 @@
+post:
+  tags: []
+  summary: Create a new Organization
+  description: Create a new Workspace
+  operationId: post-organizations
+  parameters:
+    - name: displayName
+      in: query
+      description: The name to display for the Organization
+      required: true
+      schema:
+        type: string
+    - name: desc
+      in: query
+      description: The description for the organizations
+      required: false
+      schema:
+        type: string
+    - name: name
+      in: query
+      description: >-
+        A string with a length of at least 3. Only lowercase letters,
+        underscores, and numbers are allowed. Must be unique.
+      required: false
+      schema:
+        type: string
+        minLength: 3
+    - name: website
+      in: query
+      description: A URL starting with `http://` or `https://`
+      required: false
+      schema:
+        type: string
+        format: url
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: ../components/schemas/Organization.yaml

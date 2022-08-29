@@ -1,0 +1,16 @@
+get:
+  tags: []
+  summary: Get pluginData on a Card
+  description: Get any shared pluginData on a card.
+  operationId: get-cards-id-plugindata
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the Card
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success

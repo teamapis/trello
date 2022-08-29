@@ -1,0 +1,22 @@
+post:
+  tags: []
+  summary: Dismiss a message for Member
+  description: Dismiss a message
+  operationId: post-members-id-onetimemessagesdismissed
+  parameters:
+    - name: id
+      in: path
+      description: The ID or username of the member
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: value
+      in: query
+      description: The message to dismiss
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success

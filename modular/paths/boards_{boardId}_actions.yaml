@@ -1,0 +1,24 @@
+get:
+  tags: []
+  summary: Get Actions of a Board
+  description: ''
+  operationId: get-boards-id-actions
+  parameters:
+    - name: boardId
+      in: path
+      description: ''
+      required: true
+      schema:
+        type: string
+    - name: filter
+      in: query
+      description: >-
+        A comma-separated list of [action
+        types](https://developer.atlassian.com/cloud/trello/guides/rest-api/action-types/).
+      required: false
+      schema:
+        type: string
+  deprecated: false
+  responses:
+    '200':
+      description: Success

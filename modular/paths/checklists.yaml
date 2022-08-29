@@ -1,0 +1,38 @@
+post:
+  tags: []
+  summary: Create a Checklist
+  description: ''
+  operationId: post-checklists
+  parameters:
+    - name: idCard
+      in: query
+      description: The ID of the Card that the checklist should be added to.
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: name
+      in: query
+      description: The name of the checklist. Should be a string of length 1 to 16384.
+      required: false
+      schema:
+        type: string
+        maxLength: 16384
+        minLength: 1
+    - name: pos
+      in: query
+      description: >-
+        The position of the checklist on the card. One of: `top`, `bottom`, or a
+        positive number.
+      required: false
+      schema:
+        $ref: ../components/schemas/posStringOrNumber.yaml
+    - name: idChecklistSource
+      in: query
+      description: The ID of a checklist to copy into the new checklist.
+      required: false
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success

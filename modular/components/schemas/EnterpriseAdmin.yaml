@@ -1,0 +1,11 @@
+type: object
+properties:
+  id:
+    $ref: ./TrelloID.yaml
+    example: 5dced8665015383ed5ca248c
+  fullName:
+    type: string
+    example: Bob Loblaw
+  username:
+    type: string
+    example: bobloblaw

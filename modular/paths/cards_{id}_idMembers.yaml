@@ -1,0 +1,22 @@
+post:
+  tags: []
+  summary: Add a Member to a Card
+  description: Add a member to a card
+  operationId: post-cards-id-idmembers
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the Card
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: value
+      in: query
+      description: The ID of the Member to add to the card
+      required: false
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success

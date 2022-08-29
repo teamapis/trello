@@ -1,0 +1,39 @@
+get:
+  tags: []
+  summary: Get Actions on a Card
+  description: List the Actions on a Card
+  operationId: get-cards-id-actions
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the Card
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: filter
+      in: query
+      description: >-
+        A comma-separated list of [action
+        types](https://developer.atlassian.com/cloud/trello/guides/rest-api/action-types/).
+      required: false
+      schema:
+        type: string
+        default: commentCard, updateCard:idList
+    - name: page
+      in: query
+      description: The page of results for actions. Each page of results has 50 actions.
+      required: false
+      schema:
+        type: number
+        maximum: 19
+        default: 0
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Action.yaml

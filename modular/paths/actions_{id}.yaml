@@ -1,0 +1,99 @@
+parameters:
+  - name: id
+    in: path
+    description: The ID of the Action
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get an Action
+  description: Get an Action
+  operationId: get-actions-id
+  parameters:
+    - name: display
+      in: query
+      description: ''
+      required: false
+      schema:
+        type: boolean
+        default: true
+    - name: entities
+      in: query
+      description: ''
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of action
+        [fields](/cloud/trello/guides/rest-api/object-definitions/#action-object)
+      required: false
+      schema:
+        type: string
+        default: all
+    - name: member
+      in: query
+      description: ''
+      required: false
+      schema:
+        type: boolean
+        default: true
+    - name: member_fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of member
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      schema:
+        type: string
+        default: avatarHash,fullName,initials,username
+    - name: memberCreator
+      in: query
+      description: Whether to include the member object for the creator of the action
+      required: false
+      schema:
+        type: boolean
+        default: true
+    - name: memberCreator_fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of member
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      schema:
+        type: string
+        default: avatarHash,fullName,initials,username
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+put:
+  tags: []
+  summary: Update an Action
+  description: >-
+    Update a specific Action. Only comment actions can be updated. Used to edit
+    the content of a comment.
+  operationId: put-actions-id
+  parameters:
+    - name: text
+      in: query
+      description: The new text for the comment
+      required: true
+      schema:
+        type: string
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+delete:
+  tags: []
+  summary: Delete an Action
+  description: Delete a specific action. Only comment actions can be deleted.
+  operationId: delete-actions-id
+  deprecated: false
+  responses:
+    '200':
+      description: Success

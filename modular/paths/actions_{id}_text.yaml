@@ -1,0 +1,22 @@
+put:
+  tags: []
+  summary: Update a Comment Action
+  description: Update a comment action
+  operationId: put-actions-id-text
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the action to update
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: value
+      in: query
+      description: The new text for the comment
+      required: true
+      schema:
+        type: string
+  deprecated: false
+  responses:
+    '200':
+      description: Success

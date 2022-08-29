@@ -1,0 +1,39 @@
+get:
+  tags: []
+  summary: Get a Member's custom Emoji
+  description: Get a Member's custom Emoji
+  operationId: membersidcustomemojiidemoji
+  parameters:
+    - name: id
+      in: path
+      description: The ID or username of the member
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: idEmoji
+      in: path
+      description: The ID of the custom emoji
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: fields
+      in: query
+      description: '`all` or a comma-separated list of `name`, `url`'
+      required: false
+      explode: false
+      style: form
+      schema:
+        type: string
+        enum:
+          - name
+          - url
+          - all
+        default: all
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/CustomEmoji.yaml

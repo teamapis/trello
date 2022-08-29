@@ -1,0 +1,42 @@
+parameters:
+  - name: id
+    in: path
+    description: The ID of the Card
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get Members who have voted on a Card
+  description: Get the members who have voted on a card
+  operationId: get-cards-id-membersvoted
+  parameters:
+    - name: fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of member
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      schema:
+        type: string
+        default: avatarHash,fullName,initials,username
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+post:
+  tags: []
+  summary: Add Member vote to Card
+  description: Vote on the card for a given member.
+  operationId: cardsidmembersvoted-1
+  parameters:
+    - name: value
+      in: query
+      description: The ID of the member to vote 'yes' on the card
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success

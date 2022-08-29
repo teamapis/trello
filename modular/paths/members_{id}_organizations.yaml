@@ -1,0 +1,54 @@
+get:
+  tags: []
+  summary: Get Member's Organizations
+  description: Get a member's Workspaces
+  operationId: get-members-id-organizations
+  parameters:
+    - name: id
+      in: path
+      description: The ID or username of the member
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: filter
+      in: query
+      description: >-
+        One of: `all`, `members`, `none`, `public` (Note: `members` filters to
+        only private Workspaces)
+      required: false
+      schema:
+        type: string
+        default: all
+        enum:
+          - all
+          - members
+          - none
+          - public
+    - name: fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of organization
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      explode: false
+      style: form
+      schema:
+        $ref: ../components/schemas/OrganizationFields.yaml
+        default: all
+    - name: paid_account
+      in: query
+      description: ''
+      required: false
+      schema:
+        type: boolean
+        default: false
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Organization.yaml

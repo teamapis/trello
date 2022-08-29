@@ -1,0 +1,147 @@
+type: object
+properties:
+  id:
+    type: string
+    $ref: ./TrelloID.yaml
+    example: 59c15d19566e197b23665901
+  name:
+    type: string
+    example: bentley_test
+  displayName:
+    type: string
+    example: Bentley's Test Enterprise!
+  logoHash:
+    type: string
+    nullable: true
+    example: null
+  logoUrl:
+    type: string
+    nullable: true
+    example: null
+  prefs:
+    type: object
+    properties:
+      ssoOnly:
+        type: boolean
+        example: false
+      signup:
+        type: object
+        properties:
+          banner:
+            type: string
+          bannerHtml:
+            type: string
+            example: |
+              <p>Hello</p>
+      mandatoryTransferDate:
+        type: string
+        format: date
+        nullable: true
+        example: null
+      brandingColor:
+        type: string
+      autoJoinOrganizations:
+        type: boolean
+        example: false
+      notifications:
+        type: object
+      maxMembers:
+        type: number
+        nullable: true
+        example: null
+  organizationPrefs:
+    type: object
+    properties:
+      boardVisibilityRestrict:
+        type: object
+      boardDeleteRestrict:
+        type: object
+      attachmentRestrictions:
+        type: array
+        items:
+          type: string
+          enum:
+            - computer
+            - trello
+            - google-drive
+            - box
+            - onedrive
+            - link
+  ssoActivationFailed:
+    type: boolean
+  idAdmins:
+    type: array
+    items:
+      $ref: ./TrelloID.yaml
+  enterpriseDomains:
+    type: array
+    items:
+      type: string
+      format: url
+  isRealEnterprise:
+    type: boolean
+    example: true
+  pluginWhitelistingEnabled:
+    type: array
+    items:
+      $ref: ./TrelloID.yaml
+  idOrganizations:
+    type: array
+    items:
+      $ref: ./TrelloID.yaml
+  products:
+    type: array
+    items:
+      type: number
+      format: integer
+  licenses:
+    type: object
+    properties:
+      maxMembers:
+        type: number
+        nullable: true
+        format: integer
+        example: null
+      totalMembers:
+        type: number
+        format: integer
+        example: 5
+      relatedEnterprises:
+        type: array
+        items:
+          type: object
+          properties:
+            name:
+              type: string
+              example: enterprise_name
+            displayName:
+              type: string
+              example: My Test Enterprise!
+            count:
+              type: number
+              example: 5
+              format: integer
+  domains:
+    type: array
+    items:
+      type: string
+      format: url
+  dateOrganizationPrefsLastUpdated:
+    type: string
+    example: '2019-08-22T18:15:53.546Z'
+    format: date
+  idp:
+    type: object
+    properties:
+      requestSigned:
+        type: boolean
+        example: false
+      certificate:
+        type: string
+        nullable: true
+        example: null
+      loginUrl:
+        type: string
+        format: url
+        nullable: true
+        example: null

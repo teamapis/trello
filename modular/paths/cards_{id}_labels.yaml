@@ -1,0 +1,30 @@
+post:
+  tags: []
+  summary: Create a new Label on a Card
+  description: Create a new label for the board and add it to the given card.
+  operationId: post-cards-id-labels
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the Card
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: color
+      in: query
+      description: >-
+        A valid label color or `null`. See
+        [labels](/cloud/trello/guides/rest-api/object-definitions/)
+      required: true
+      schema:
+        type: string
+    - name: name
+      in: query
+      description: A name for the label
+      required: false
+      schema:
+        type: string
+  deprecated: false
+  responses:
+    '200':
+      description: Success

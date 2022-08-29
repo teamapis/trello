@@ -1,0 +1,30 @@
+get:
+  tags: []
+  summary: Get boardStars on a Board
+  description: ''
+  operationId: get-boards-id-boardstars
+  parameters:
+    - name: boardId
+      in: path
+      description: ''
+      required: true
+      schema:
+        type: string
+    - name: filter
+      in: path
+      description: 'Valid values: mine, none'
+      required: true
+      schema:
+        type: string
+        default: mine
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              oneOf:
+                - $ref: ../components/schemas/BoardStars.yaml

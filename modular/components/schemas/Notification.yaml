@@ -1,0 +1,38 @@
+properties:
+  id:
+    type: string
+    example: 5dc591ac425f2a223aba0a8e
+  unread:
+    type: boolean
+    example: true
+  type:
+    type: string
+    enum:
+      - cardDueSoon
+    example: cardDueSoon
+  date:
+    type: string
+    example: '2019-11-08T16:02:52.763Z'
+  dateRead:
+    type: string
+    example: null
+  data:
+    type: string
+    example: null
+  card:
+    type: object
+    $ref: ./Card.yaml
+  board:
+    type: object
+    $ref: ./Board.yaml
+  idMemberCreator:
+    $ref: ./TrelloID.yaml
+    nullable: true
+    example: null
+  idAction:
+    $ref: ./TrelloID.yaml
+    nullable: true
+    example: null
+  reactions:
+    type: array
+    example: []

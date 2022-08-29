@@ -1,0 +1,65 @@
+parameters:
+  - name: id
+    in: path
+    description: The ID of the Card
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+  - name: idAttachment
+    in: path
+    description: The ID of the Attachment
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get an Attachment on a Card
+  description: Get a specific Attachment on a Card.
+  operationId: get-cards-id-attachments-idattachment
+  parameters:
+    - name: fields
+      in: query
+      description: The Attachment fields to be included in the response.
+      required: false
+      style: form
+      explode: false
+      schema:
+        type: array
+        items:
+          anyOf:
+            - $ref: ../components/schemas/AttachmentFields.yaml
+        default:
+          - all
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              oneOf:
+                - $ref: ../components/schemas/Attachment.yaml
+delete:
+  tags: []
+  summary: Delete an Attachment on a Card
+  description: Delete an Attachment
+  operationId: deleted-cards-id-attachments-idattachment
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the Card
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: idAttachment
+      in: path
+      description: The ID of the attachment to delete
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success

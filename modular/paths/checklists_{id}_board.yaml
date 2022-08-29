@@ -1,0 +1,28 @@
+get:
+  tags: []
+  summary: Get the Board the Checklist is on
+  description: ''
+  operationId: get-checklists-id-board
+  parameters:
+    - name: id
+      in: path
+      description: ID of a checklist.
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of board
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      schema:
+        type: string
+        enum:
+          - all
+          - name
+        default: all
+  deprecated: false
+  responses:
+    '200':
+      description: Success

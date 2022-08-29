@@ -1,0 +1,32 @@
+get:
+  tags: []
+  summary: Get the Member who created the Notification
+  description: Get the member who created the notification
+  operationId: get-notifications-id-membercreator
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the notification
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of member
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      explode: false
+      style: form
+      schema:
+        $ref: ../components/schemas/MemberFields.yaml
+        default: all
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: ../components/schemas/Member.yaml

@@ -1,0 +1,13 @@
+type: object
+properties:
+  status:
+    type: string
+    enum:
+      - ok
+      - warning
+  disableAt:
+    type: number
+    example: 36000
+  warnAt:
+    type: number
+    example: 32400

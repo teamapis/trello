@@ -1,0 +1,16 @@
+delete:
+  tags: []
+  summary: Delete the email domain restriction on who can be invited to the Workspace
+  description: Remove the email domain restriction on who can be invited to the Workspace
+  operationId: delete-organizations-id-prefs-orginviterestrict
+  parameters:
+    - name: id
+      in: path
+      description: The ID or name of the organization
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success

@@ -1,0 +1,57 @@
+parameters:
+  - name: token
+    in: path
+    description: ''
+    required: true
+    schema:
+      type: string
+get:
+  tags: []
+  summary: Get Webhooks for Token
+  description: Retrieve all webhooks created with a Token.
+  operationId: get-tokens-token-webhooks
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Webhook.yaml
+post:
+  tags: []
+  summary: Create Webhooks for Token
+  description: Create a new webhook for a Token.
+  operationId: post-tokens-token-webhooks
+  parameters:
+    - name: description
+      in: query
+      description: >-
+        A description to be displayed when retrieving information about the
+        webhook.
+      required: false
+      schema:
+        type: string
+    - name: callbackURL
+      in: query
+      description: The URL that the webhook should POST information to.
+      required: true
+      schema:
+        type: string
+        format: url
+    - name: idModel
+      in: query
+      description: ID of the object to create a webhook on.
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Webhook.yaml

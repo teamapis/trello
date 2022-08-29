@@ -1,0 +1,49 @@
+parameters:
+  - name: id
+    in: path
+    description: The ID or username of the member
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+  - name: idSticker
+    in: path
+    description: The ID of the uploaded sticker
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get a Member's custom Sticker
+  description: Get a Member's custom Sticker
+  operationId: get-members-id-customstickers-idsticker
+  parameters:
+    - name: fields
+      in: query
+      description: '`all` or a comma-separated list of `scaled`, `url`'
+      required: false
+      explode: false
+      style: form
+      schema:
+        enum:
+          - scaled
+          - url
+          - all
+        type: string
+        default: all
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/CustomSticker.yaml
+delete:
+  tags: []
+  summary: Delete a Member's custom Sticker
+  description: Delete a Member's custom Sticker
+  operationId: delete-members-id-customstickers-idsticker
+  deprecated: false
+  responses:
+    '200':
+      description: Success

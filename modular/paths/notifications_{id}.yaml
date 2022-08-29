@@ -1,0 +1,166 @@
+get:
+  tags: []
+  summary: Get a Notification
+  description: ''
+  operationId: get-notifications-id
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the notification
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: board
+      in: query
+      description: Whether to include the board object
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: board_fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of board
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      style: form
+      explode: false
+      schema:
+        $ref: ../components/schemas/BoardFields.yaml
+        default: name
+    - name: card
+      in: query
+      description: Whether to include the card object
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: card_fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of card
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      style: form
+      explode: false
+      schema:
+        $ref: ../components/schemas/CardFields.yaml
+        default: name
+    - name: display
+      in: query
+      description: Whether to include the display object with the results
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: entities
+      in: query
+      description: Whether to include the entities object with the results
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of notification
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      style: form
+      explode: false
+      schema:
+        $ref: ../components/schemas/NotificationFields.yaml
+        default: all
+    - name: list
+      in: query
+      description: Whether to include the list object
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: member
+      in: query
+      description: Whether to include the member object
+      required: false
+      schema:
+        type: boolean
+        default: true
+    - name: member_fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of member
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      style: form
+      explode: false
+      schema:
+        $ref: ../components/schemas/MemberFields.yaml
+        default: avatarHash,fullName,initials,username
+    - name: memberCreator
+      in: query
+      description: Whether to include the member object of the creator
+      required: false
+      schema:
+        type: boolean
+        default: true
+    - name: memberCreator_fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of member
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      schema:
+        $ref: ../components/schemas/MemberFields.yaml
+        default: avatarHash,fullName,initials,username
+    - name: organization
+      in: query
+      description: Whether to include the organization object
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: organization_fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of organization
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      schema:
+        $ref: ../components/schemas/OrganizationFields.yaml
+        default: displayName
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: ../components/schemas/Notification.yaml
+put:
+  tags: []
+  summary: Update a Notification's read status
+  description: Update the read status of a notification
+  operationId: put-notifications-id
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the notification
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: unread
+      in: query
+      description: Whether the notification should be marked as read or not
+      required: false
+      schema:
+        type: boolean
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: ../components/schemas/Notification.yaml

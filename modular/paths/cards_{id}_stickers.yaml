@@ -1,0 +1,84 @@
+parameters:
+  - name: id
+    in: path
+    description: The ID of the Card
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get Stickers on a Card
+  description: Get the stickers on a card
+  operationId: get-cards-id-stickers
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the Card
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of sticker
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      schema:
+        type: string
+        default: all
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+post:
+  tags: []
+  summary: Add a Sticker to a Card
+  description: Add a sticker to a card
+  operationId: post-cards-id-stickers
+  parameters:
+    - name: image
+      in: query
+      description: >-
+        For custom stickers, the id of the sticker. For default stickers, the
+        string identifier (like 'taco-cool', see below)
+      required: true
+      schema:
+        type: string
+    - name: top
+      in: query
+      description: The top position of the sticker, from -60 to 100
+      required: true
+      schema:
+        type: number
+        format: float
+        minimum: -60
+        maximum: 100
+    - name: left
+      in: query
+      description: The left position of the sticker, from -60 to 100
+      required: true
+      schema:
+        type: number
+        format: float
+        minimum: -60
+        maximum: 100
+    - name: zIndex
+      in: query
+      description: The z-index of the sticker
+      required: true
+      schema:
+        type: integer
+    - name: rotate
+      in: query
+      description: The rotation of the sticker
+      required: false
+      schema:
+        type: number
+        format: float
+        default: 0
+        minimum: 0
+        maximum: 360
+  deprecated: false
+  responses:
+    '200':
+      description: Success

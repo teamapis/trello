@@ -1,0 +1,23 @@
+post:
+  tags: []
+  summary: Create Avatar for Member
+  description: Create a new avatar for a member
+  operationId: membersidavatar
+  parameters:
+    - name: id
+      in: path
+      description: The ID or username of the member
+      required: true
+      schema:
+        type: string
+    - name: file
+      in: query
+      description: ''
+      required: true
+      schema:
+        type: string
+        format: binary
+  deprecated: false
+  responses:
+    '200':
+      description: Success

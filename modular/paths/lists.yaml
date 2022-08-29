@@ -1,0 +1,42 @@
+post:
+  tags: []
+  summary: Create a new List
+  description: Create a new List on a Board
+  operationId: post-lists
+  parameters:
+    - name: name
+      in: query
+      description: Name for the list
+      required: true
+      schema:
+        type: string
+    - name: idBoard
+      in: query
+      description: The long ID of the board the list should be created on
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: idListSource
+      in: query
+      description: ID of the List to copy into the new List
+      required: false
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: pos
+      in: query
+      description: >-
+        Position of the list. `top`, `bottom`, or a positive floating point
+        number
+      required: false
+      schema:
+        oneOf:
+          - type: number
+            format: float
+          - type: string
+            enum:
+              - top
+              - bottom
+  deprecated: false
+  responses:
+    '200':
+      description: Success

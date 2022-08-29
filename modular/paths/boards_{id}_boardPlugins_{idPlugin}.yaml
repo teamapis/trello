@@ -1,0 +1,22 @@
+delete:
+  tags: []
+  summary: Disable a Power-Up on a Board
+  description: Disable a Power-Up on a board
+  operationId: delete-boards-id-boardplugins
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the board
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: idPlugin
+      in: path
+      description: The ID of the Power-Up to disable
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: true
+  responses:
+    '200':
+      description: Success

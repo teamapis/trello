@@ -1,0 +1,59 @@
+put:
+  tags: []
+  summary: Deactivate a Member of an Enterprise.
+  description: Deactivate a Member of an Enterprise.
+  operationId: enterprises-id-members-idMember-deactivated
+  parameters:
+    - name: id
+      in: path
+      description: ID of the enterprise to retrieve.
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: idMember
+      in: path
+      description: ID of the Member to deactive.
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: value
+      in: query
+      description: Determines whether the user is deactivated or not.
+      required: true
+      schema:
+        type: boolean
+    - name: fields
+      in: query
+      description: >-
+        A comma separated list of any valid values that the [nested member field
+        resource]() accepts.
+      required: false
+      explode: false
+      style: form
+      schema:
+        $ref: ../components/schemas/MemberFields.yaml
+        default: avatarHash, fullName, initials, username
+    - name: organization_fields
+      in: query
+      description: >-
+        Any valid value that the [nested organization
+        resource](/cloud/trello/guides/rest-api/nested-resources/) accepts.
+      required: false
+      explode: false
+      style: form
+      schema:
+        $ref: ../components/schemas/OrganizationFields.yaml
+        default: displayName
+    - name: board_fields
+      in: query
+      description: >-
+        Any valid value that the [nested board
+        resource](/cloud/trello/guides/rest-api/nested-resources/) accepts.
+      required: false
+      schema:
+        $ref: ../components/schemas/BoardFields.yaml
+        default: name
+  deprecated: false
+  responses:
+    '200':
+      description: Success

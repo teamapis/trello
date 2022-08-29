@@ -1,0 +1,53 @@
+parameters:
+  - name: id
+    in: path
+    description: The ID or username of the member
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+  - name: idStar
+    in: path
+    description: The ID of the board star
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get a boardStar of Member
+  description: Get a specific boardStar
+  operationId: get-members-id-boardstars-idstar
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BoardStars.yaml
+put:
+  tags: []
+  summary: Update the position of a boardStar of Member
+  description: Update the position of a starred board
+  operationId: put-members-id-boardstars-idstar
+  parameters:
+    - name: pos
+      in: query
+      description: >-
+        New position for the starred board. `top`, `bottom`, or a positive
+        float.
+      required: false
+      schema:
+        $ref: ../components/schemas/posStringOrNumber.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+delete:
+  tags: []
+  summary: Delete Star for Board
+  description: Unstar a board
+  operationId: delete-members-id-boardstars-idstar
+  deprecated: false
+  responses:
+    '200':
+      description: Success

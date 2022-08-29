@@ -1,0 +1,36 @@
+get:
+  tags: []
+  summary: Get whether an organization can be transferred to an enterprise.
+  description: Get whether an organization can be transferred to an enterprise.
+  operationId: get-enterprises-id-transferrable-organization-idOrganization
+  parameters:
+    - name: id
+      in: path
+      description: ID of the Enterprise to retrieve.
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: idOrganization
+      in: path
+      description: An ID of an Organization resource.
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/TransferrableOrganization.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '404':
+      $ref: ../components/responses/NotFound.yaml
+    default:
+      description: Unexpected error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Error.yaml

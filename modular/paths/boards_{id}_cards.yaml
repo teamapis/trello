@@ -1,0 +1,16 @@
+get:
+  tags: []
+  summary: Get Cards on a Board
+  description: Get all of the open Cards on a Board.
+  operationId: get-boards-id-cards
+  parameters:
+    - name: id
+      in: path
+      description: ''
+      required: true
+      schema:
+        type: string
+  deprecated: false
+  responses:
+    '200':
+      description: Success

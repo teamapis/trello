@@ -1,0 +1,26 @@
+type: object
+properties:
+  id:
+    $ref: ./TrelloID.yaml
+    example: 58dd6dcaf8b86744d3cb4cde
+  description:
+    type: string
+    example: Board Webhook
+  idModel:
+    $ref: ./TrelloID.yaml
+    example: 59cd149051aa57a706962996
+  callbackURL:
+    type: string
+    format: url
+    example: https://mywebhookurl.com/?type=board
+  active:
+    type: boolean
+    example: true
+  consecutiveFailures:
+    type: number
+    example: 0
+  firstConsecutiveFailDate:
+    type: string
+    format: date
+    nullable: true
+    example: null

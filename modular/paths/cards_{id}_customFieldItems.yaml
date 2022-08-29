@@ -1,0 +1,22 @@
+get:
+  tags: []
+  summary: Get Custom Field Items for a Card
+  description: Get the custom field items for a card.
+  operationId: get-cards-id-customfielditems
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the Card
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/CustomFieldItems.yaml

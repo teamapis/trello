@@ -1,0 +1,17 @@
+type: object
+properties:
+  id:
+    $ref: ./TrelloID.yaml
+    example: 5a7cd2f8f99c517f58da1579
+  name:
+    type: string
+    example: Attachment Section Example
+  locale:
+    type: string
+    example: en-US
+  description:
+    type: string
+    example: The [Glitch](https://glitch.com) Power-Up allows you to...
+  overview:
+    type: string
+    example: ''

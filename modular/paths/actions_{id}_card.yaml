@@ -1,0 +1,27 @@
+get:
+  tags: []
+  summary: Get the Card for an Action
+  description: Get the card for an action
+  operationId: get-actions-id-card
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the action
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: fields
+      in: query
+      description: '`all` or a comma-separated list of card fields'
+      required: false
+      schema:
+        $ref: ../components/schemas/CardFields.yaml
+        default: all
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Card.yaml

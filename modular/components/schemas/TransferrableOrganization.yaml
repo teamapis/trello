@@ -1,0 +1,45 @@
+type: object
+properties:
+  transferrable:
+    type: boolean
+    example: true
+  newBillableMembers:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          $ref: ./TrelloID.yaml
+          example: 5ab10be237846c43015f1091
+        fullName:
+          type: string
+          example: Bob Loblaw
+        username:
+          type: string
+          example: bobloblaw
+        initials:
+          type: string
+          example: BL
+        avatarHash:
+          type: string
+          example: fc8faaaee46666a4eb8b626c08933e16
+  restrictedMembers:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          $ref: ./TrelloID.yaml
+          example: 5ab10be237846c43015f1091
+        fullName:
+          type: string
+          example: Bob Loblaw
+        username:
+          type: string
+          example: bobloblaw
+        initials:
+          type: string
+          example: BL
+        avatarHash:
+          type: string
+          example: fc8faaaee46666a4eb8b626c08933e16

@@ -1,0 +1,85 @@
+parameters:
+  - name: id
+    in: path
+    description: The ID of the Card
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+  - name: idSticker
+    in: path
+    description: The ID of the sticker
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get a Sticker on a Card
+  description: Get a specific sticker on a card
+  operationId: get-cards-id-stickers-idsticker
+  parameters:
+    - name: fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of sticker
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      schema:
+        type: string
+        default: all
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+delete:
+  tags: []
+  summary: Delete a Sticker on a Card
+  description: Remove a sticker from the card
+  operationId: delete-cards-id-stickers-idsticker
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+put:
+  tags: []
+  summary: Update a Sticker on a Card
+  description: Update a sticker on a card
+  operationId: put-cards-id-stickers-idsticker
+  parameters:
+    - name: top
+      in: query
+      description: The top position of the sticker, from -60 to 100
+      required: true
+      schema:
+        type: number
+        format: float
+        minimum: -60
+        maximum: 100
+    - name: left
+      in: query
+      description: The left position of the sticker, from -60 to 100
+      required: true
+      schema:
+        type: number
+        format: float
+        minimum: -60
+        maximum: 100
+    - name: zIndex
+      in: query
+      description: The z-index of the sticker
+      required: true
+      schema:
+        type: integer
+    - name: rotate
+      in: query
+      description: The rotation of the sticker
+      required: false
+      schema:
+        type: number
+        format: float
+        default: 0
+        minimum: 0
+        maximum: 360
+  deprecated: false
+  responses:
+    '200':
+      description: Success

@@ -1,0 +1,14 @@
+type: object
+properties:
+  id:
+    $ref: ./TrelloID.yaml
+    example: 5589b47349b40cedc28ceae2
+  name:
+    type: string
+    example: My Cards
+  query:
+    type: string
+    example: '@me'
+  pos:
+    $ref: ./posStringOrNumber.yaml
+    example: 1638

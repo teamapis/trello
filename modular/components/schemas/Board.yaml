@@ -1,0 +1,103 @@
+type: object
+required:
+  - id
+properties:
+  id:
+    $ref: ./TrelloID.yaml
+  name:
+    type: string
+    description: The name of the board.
+    example: Trello Platform Changes
+  desc:
+    type: string
+    example: Track changes to Trello's Platform on this board.
+  descData:
+    type: string
+  closed:
+    type: boolean
+    example: false
+  idMemberCreator:
+    $ref: ./TrelloID.yaml
+  idOrganization:
+    $ref: ./TrelloID.yaml
+  pinned:
+    type: boolean
+    example: false
+  url:
+    type: string
+    format: url
+    example: https://trello.com/b/dQHqCohZ/trello-platform-changelog
+  shortUrl:
+    type: string
+    format: url
+    example: https://trello.com/b/dQHqCohZ
+  prefs:
+    $ref: ./Prefs.yaml
+  labelNames:
+    type: object
+    properties:
+      green:
+        type: string
+        example: Addition
+      yellow:
+        type: string
+        example: Update
+      orange:
+        type: string
+        example: Deprecation
+      red:
+        type: string
+        example: Deletion
+      purple:
+        type: string
+        example: Power-Ups
+      blue:
+        type: string
+        example: News
+      sky:
+        type: string
+        example: Announcement
+      lime:
+        type: string
+        example: Delight
+      pink:
+        type: string
+        example: REST API
+      black:
+        type: string
+        example: Capabilties
+  limits:
+    type: object
+    $ref: ./Limits.yaml
+  starred:
+    type: boolean
+  memberships:
+    type: string
+  shortLink:
+    type: string
+  subscribed:
+    type: boolean
+  powerUps:
+    type: string
+  dateLastActivity:
+    type: string
+    format: date
+  dateLastView:
+    type: string
+    format: date
+  idTags:
+    type: string
+  datePluginDisable:
+    type: string
+    format: date
+    nullable: true
+  creationMethod:
+    type: string
+    nullable: true
+  ixUpdate:
+    type: integer
+  templateGallery:
+    type: string
+    nullable: true
+  enterpriseOwned:
+    type: boolean

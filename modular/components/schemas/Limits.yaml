@@ -1,0 +1,8 @@
+type: object
+properties:
+  attachments:
+    type: object
+    properties:
+      perBoard:
+        type: object
+        $ref: ./LimitsObject.yaml

@@ -1,0 +1,21 @@
+put:
+  tags: []
+  summary: Update showSidebarMembers Pref on a Board
+  operationId: put-boards-id-myPrefs-showsidebarmembers
+  parameters:
+    - name: id
+      in: path
+      description: The id of the board to update
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: value
+      in: query
+      description: Determines whether to show members of the board in the sidebar.
+      required: true
+      schema:
+        type: boolean
+  deprecated: false
+  responses:
+    '200':
+      description: Success

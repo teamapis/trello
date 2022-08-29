@@ -1,0 +1,48 @@
+get:
+  tags: []
+  summary: Get Memberships of an Organization
+  description: List the memberships of a Workspace
+  operationId: get-organizations-id-memberships
+  parameters:
+    - name: id
+      in: path
+      description: The ID or name of the organization
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: filter
+      in: query
+      description: >-
+        `all` or a comma-separated list of: `active`, `admin`, `deactivated`,
+        `me`, `normal`
+      required: false
+      style: form
+      explode: false
+      schema:
+        type: string
+        default: all
+        enum:
+          - all
+          - active
+          - admin
+          - deactivated
+          - me
+          - normal
+    - name: member
+      in: query
+      description: Whether to include the Member objects with the Memberships
+      required: false
+      schema:
+        type: boolean
+        default: false
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              oneOf:
+                - $ref: ../components/schemas/Memberships.yaml

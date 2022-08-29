@@ -1,0 +1,29 @@
+get:
+  tags: []
+  summary: Get Member's Tokens
+  description: List a members app tokens
+  operationId: get-members-id-tokens
+  parameters:
+    - name: id
+      in: path
+      description: The ID or username of the member
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: webhooks
+      in: query
+      description: Whether to include webhooks
+      required: false
+      schema:
+        type: boolean
+        default: false
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Token.yaml

@@ -1,0 +1,22 @@
+delete:
+  tags: []
+  summary: Remove a Member from an Organization and all Organization Boards
+  description: Remove a member from a Workspace and from all Workspace boards
+  operationId: organizations-id-members-idmember-all
+  parameters:
+    - name: id
+      in: path
+      description: The ID or name of the organization
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: idMember
+      in: path
+      description: The ID of the member to remove from the Workspace
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success

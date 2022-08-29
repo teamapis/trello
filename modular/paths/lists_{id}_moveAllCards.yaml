@@ -1,0 +1,28 @@
+post:
+  tags: []
+  summary: Move all Cards in List
+  description: Move all Cards in a List
+  operationId: post-lists-id-moveallcards
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the list
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: idBoard
+      in: query
+      description: The ID of the board the cards should be moved to
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: idList
+      in: query
+      description: The ID of the list that the cards should be moved to
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success

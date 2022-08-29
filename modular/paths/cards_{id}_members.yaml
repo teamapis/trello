@@ -1,0 +1,25 @@
+get:
+  tags: []
+  summary: Get the Members of a Card
+  description: Get the members on a card
+  operationId: get-cards-id-members
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the Card
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of member
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      schema:
+        type: string
+        default: avatarHash,fullName,initials,username
+  deprecated: false
+  responses:
+    '200':
+      description: Success

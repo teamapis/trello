@@ -1,0 +1,23 @@
+get:
+  tags: []
+  summary: Get checkItems on a Card
+  description: Get the completed checklist items on a card
+  operationId: get-cards-id-checkitemstates
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the Card
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: fields
+      in: query
+      description: '`all` or a comma-separated list of: `idCheckItem`, `state`'
+      required: false
+      schema:
+        type: string
+        default: all
+  deprecated: false
+  responses:
+    '200':
+      description: Success

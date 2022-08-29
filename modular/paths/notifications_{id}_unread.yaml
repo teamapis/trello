@@ -1,0 +1,26 @@
+put:
+  tags: []
+  summary: Update Notification's read status
+  description: Update Notification's read status
+  operationId: put-notifications-id-unread
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the notification
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: value
+      in: query
+      description: ''
+      required: false
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: ../components/schemas/Notification.yaml

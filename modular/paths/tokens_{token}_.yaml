@@ -1,0 +1,16 @@
+delete:
+  tags: []
+  summary: Delete a Token
+  description: Delete a token.
+  operationId: delete-token
+  parameters:
+    - name: token
+      in: path
+      description: ''
+      required: true
+      schema:
+        type: string
+  deprecated: false
+  responses:
+    '200':
+      description: Success

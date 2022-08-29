@@ -1,0 +1,22 @@
+delete:
+  tags: []
+  summary: Delete an Organization's Tag
+  description: Delete an organization's tag
+  operationId: delete-organizations-id-tags-idtag
+  parameters:
+    - name: id
+      in: path
+      description: The ID or name of the organization
+      required: true
+      schema:
+        type: string
+    - name: idTag
+      in: path
+      description: The ID of the tag to delete
+      required: true
+      schema:
+        type: string
+  deprecated: false
+  responses:
+    '200':
+      description: Success

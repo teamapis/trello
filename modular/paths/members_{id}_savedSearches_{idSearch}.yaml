@@ -1,0 +1,67 @@
+parameters:
+  - name: id
+    in: path
+    description: The ID or username of the member
+    required: true
+    schema:
+      type: string
+  - name: idSearch
+    in: path
+    description: The ID of the saved search to delete
+    required: true
+    schema:
+      type: string
+get:
+  tags: []
+  summary: Get a saved search
+  description: Get a saved search
+  operationId: get-members-id-savedsearches-idsearch
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/SavedSearch.yaml
+put:
+  tags: []
+  summary: Update a saved search
+  description: Update a saved search
+  operationId: put-members-id-savedsearches-idsearch
+  parameters:
+    - name: name
+      in: query
+      description: The new name for the saved search
+      required: false
+      schema:
+        type: string
+    - name: query
+      in: query
+      description: The new search query
+      required: false
+      schema:
+        type: string
+    - name: pos
+      in: query
+      description: New position for saves search. `top`, `bottom`, or a positive float.
+      required: false
+      schema:
+        type: string
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/SavedSearch.yaml
+delete:
+  tags: []
+  summary: Delete a saved search
+  description: Delete a saved search
+  operationId: delete-members-id-savedsearches-idsearch
+  deprecated: false
+  responses:
+    '200':
+      description: Success

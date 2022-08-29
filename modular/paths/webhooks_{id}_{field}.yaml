@@ -1,0 +1,31 @@
+get:
+  tags: []
+  summary: Get a field on a Webhook
+  description: Get a field on a Webhook
+  operationId: webhooksidfield
+  parameters:
+    - name: id
+      in: path
+      description: ID of the webhook.
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: field
+      in: path
+      description: >-
+        Field to retrieve. One of: `active`, `callbackURL`, `description`,
+        `idModel`
+      required: true
+      schema:
+        enum:
+          - active
+          - callbackURL
+          - description
+          - idModel
+          - consecutiveFailures
+          - firstConsecutiveFailDate
+        type: string
+  deprecated: false
+  responses:
+    '200':
+      description: Success

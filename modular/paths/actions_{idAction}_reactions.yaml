@@ -1,0 +1,62 @@
+parameters:
+  - name: idAction
+    in: path
+    description: The ID of the action
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get Action's Reactions
+  description: List reactions for an action
+  operationId: get-actions-idaction-reactions
+  parameters:
+    - name: member
+      in: query
+      description: >-
+        Whether to load the member as a nested resource. See [Members Nested
+        Resource](/cloud/trello/guides/rest-api/nested-resources/#members-nested-resource)
+      required: false
+      schema:
+        type: boolean
+        default: true
+    - name: emoji
+      in: query
+      description: Whether to load the emoji as a nested resource.
+      required: false
+      schema:
+        type: boolean
+        default: true
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+post:
+  tags: []
+  summary: Create Reaction for Action
+  description: Adds a new reaction to an action
+  operationId: post-actions-idaction-reactions
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            shortName:
+              type: string
+              description: >-
+                The primary `shortName` of the emoji to add. See
+                [/emoji](#emoji)
+            skinVariation:
+              type: string
+              description: The `skinVariation` of the emoji to add. See [/emoji](#emoji)
+            native:
+              type: string
+              description: The emoji to add as a native unicode emoji. See [/emoji](#emoji)
+            unified:
+              type: string
+              description: The `unified` value of the emoji to add. See [/emoji](#emoji)
+  deprecated: false
+  responses:
+    '200':
+      description: Success

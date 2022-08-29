@@ -1,0 +1,16 @@
+delete:
+  tags: []
+  summary: Remove the associated Google Apps domain from a Workspace
+  description: Remove the associated Google Apps domain from a Workspace
+  operationId: delete-organizations-id-prefs-associateddomain
+  parameters:
+    - name: id
+      in: path
+      description: The ID or name of the organization
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success

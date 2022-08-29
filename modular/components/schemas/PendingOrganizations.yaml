@@ -1,0 +1,79 @@
+type: object
+properties:
+  id:
+    type: string
+    $ref: ./TrelloID.yaml
+    example: 617ac9070293e6612650e0ca
+  idMember:
+    $ref: ./TrelloID.yaml
+    example: 5589c3ea49b40cedc28cf70e
+  memberRequestor:
+    type: object
+    properties:
+      id:
+        type: string
+        $ref: ./TrelloID.yaml
+        example: 59cd149051aa57a706962996
+      fullName:
+        type: string
+        example: Bob Loblaw (Trello)
+  date:
+    type: string
+    format: date
+    example: '2018-10-17T19:10:14.808Z'
+  displayName:
+    type: string
+    example: Organization Name
+  membershipCount:
+    type: number
+    example: 2
+  logoUrl:
+    type: string
+    nullable: true
+    example: null
+  transferability:
+    type: object
+    properties:
+      transferrable:
+        type: boolean
+        example: true
+      newBillableMembers:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              $ref: ./TrelloID.yaml
+              example: 5ab10be237846c43015f1091
+            fullName:
+              type: string
+              example: Bob Loblaw
+            username:
+              type: string
+              example: bobloblaw
+            initials:
+              type: string
+              example: BL
+            avatarHash:
+              type: string
+              example: fc8faaaee46666a4eb8b626c08933e16
+      restrictedMembers:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              $ref: ./TrelloID.yaml
+              example: 5ab10be237846c43015f1091
+            fullName:
+              type: string
+              example: Bob Loblaw
+            username:
+              type: string
+              example: bobloblaw
+            initials:
+              type: string
+              example: BL
+            avatarHash:
+              type: string
+              example: fc8faaaee46666a4eb8b626c08933e16

@@ -1,0 +1,13 @@
+type: string
+enum:
+  - id
+  - bytes
+  - date
+  - edgeColor
+  - idMember
+  - isUpload
+  - mimeType
+  - name
+  - previews
+  - url
+  - pos

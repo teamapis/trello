@@ -1,0 +1,41 @@
+post:
+  tags: []
+  summary: Create a Webhook
+  description: Create a new webhook.
+  operationId: post-webhooks
+  parameters:
+    - name: description
+      in: query
+      description: A string with a length from `0` to `16384`.
+      required: false
+      schema:
+        type: string
+        maxLength: 16384
+        minLength: 0
+    - name: callbackURL
+      in: query
+      description: A valid URL that is reachable with a `HEAD` and `POST` request.
+      required: true
+      schema:
+        type: string
+        format: url
+    - name: idModel
+      in: query
+      description: ID of the model to be monitored
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: active
+      in: query
+      description: Determines whether the webhook is active and sending `POST` requests.
+      required: false
+      schema:
+        type: boolean
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Webhook.yaml

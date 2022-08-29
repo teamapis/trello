@@ -1,0 +1,295 @@
+get:
+  tags: []
+  summary: Get a Member
+  description: Get a member
+  operationId: get-members=id
+  parameters:
+    - name: id
+      in: path
+      description: The ID or username of the member
+      required: true
+      schema:
+        oneOf:
+          - $ref: ../components/schemas/TrelloID.yaml
+          - type: string
+    - name: actions
+      in: query
+      description: >-
+        See the [Actions Nested
+        Resource](/cloud/trello/guides/rest-api/nested-resources/#actions-nested-resource)
+      required: false
+      schema:
+        type: string
+    - name: boards
+      in: query
+      description: >-
+        See the [Boards Nested
+        Resource](/cloud/trello/guides/rest-api/nested-resources/#boards-nested-resource)
+      required: false
+      schema:
+        type: string
+    - name: boardBackgrounds
+      in: query
+      description: 'One of: `all`, `custom`, `default`, `none`, `premium`'
+      required: false
+      schema:
+        type: string
+        enum:
+          - all
+          - custom
+          - default
+          - none
+          - premium
+        default: none
+    - name: boardsInvited
+      in: query
+      description: >-
+        `all` or a comma-separated list of: closed, members, open, organization,
+        pinned, public, starred, unpinned
+      required: false
+      schema:
+        enum:
+          - closed
+          - members
+          - open
+          - organization
+          - pinned
+          - public
+          - starred
+          - unpinned
+        type: string
+    - name: boardsInvited_fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of board
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      style: form
+      explode: false
+      schema:
+        $ref: ../components/schemas/BoardFields.yaml
+        default: name,closed,idOrganization,pinned
+    - name: boardStars
+      in: query
+      description: Whether to return the boardStars or not
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: cards
+      in: query
+      description: >-
+        See the [Cards Nested
+        Resource](/cloud/trello/guides/rest-api/nested-resources/#cards-nested-resource)
+        for additional options
+      required: false
+      schema:
+        type: string
+        default: none
+    - name: customBoardBackgrounds
+      in: query
+      description: '`all` or `none`'
+      required: false
+      schema:
+        type: string
+        enum:
+          - all
+          - none
+        default: none
+    - name: customEmoji
+      in: query
+      description: '`all` or `none`'
+      required: false
+      schema:
+        type: string
+        enum:
+          - all
+          - none
+        default: none
+    - name: customStickers
+      in: query
+      description: '`all` or `none`'
+      required: false
+      schema:
+        type: string
+        enum:
+          - all
+          - none
+        default: none
+    - name: fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of member
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      schema:
+        $ref: ../components/schemas/MemberFields.yaml
+        default: all
+    - name: notifications
+      in: query
+      description: >-
+        See the [Notifications Nested
+        Resource](/cloud/trello/guides/rest-api/nested-resources/#notifications-nested-resource)
+      required: false
+      schema:
+        type: string
+    - name: organizations
+      in: query
+      description: 'One of: `all`, `members`, `none`, `public`'
+      required: false
+      schema:
+        type: string
+        enum:
+          - all
+          - members
+          - none
+          - public
+        default: none
+    - name: organization_fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of organization
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      schema:
+        $ref: ../components/schemas/OrganizationFields.yaml
+        default: all
+    - name: organization_paid_account
+      in: query
+      description: ''
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: organizationsInvited
+      in: query
+      description: 'One of: `all`, `members`, `none`, `public`'
+      required: false
+      schema:
+        type: string
+        enum:
+          - all
+          - members
+          - none
+          - public
+        default: none
+    - name: organizationsInvited_fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of organization
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      schema:
+        $ref: ../components/schemas/OrganizationFields.yaml
+        default: all
+    - name: paid_account
+      in: query
+      description: ''
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: savedSearches
+      in: query
+      description: ''
+      required: false
+      schema:
+        type: boolean
+        default: false
+    - name: tokens
+      in: query
+      description: '`all` or `none`'
+      required: false
+      schema:
+        type: string
+        enum:
+          - all
+          - none
+        default: none
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: ../components/schemas/Member.yaml
+put:
+  tags: []
+  summary: Update a Member
+  description: Update a Member
+  operationId: put-members-id
+  parameters:
+    - name: id
+      in: path
+      description: The ID or username of the member
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: fullName
+      in: query
+      description: New name for the member. Cannot begin or end with a space.
+      required: false
+      schema:
+        type: string
+    - name: initials
+      in: query
+      description: New initials for the member. 1-4 characters long.
+      required: false
+      schema:
+        type: string
+        maxLength: 4
+        minLength: 1
+    - name: username
+      in: query
+      description: >-
+        New username for the member. At least 3 characters long, only lowercase
+        letters, underscores, and numbers. Must be unique.
+      required: false
+      schema:
+        type: string
+    - name: bio
+      in: query
+      description: ''
+      required: false
+      schema:
+        type: string
+    - name: avatarSource
+      in: query
+      description: 'One of: `gravatar`, `none`, `upload`'
+      required: false
+      schema:
+        type: string
+        enum:
+          - gravatar
+          - none
+          - upload
+    - name: prefs/colorBlind
+      in: query
+      description: ''
+      required: false
+      schema:
+        type: boolean
+    - name: prefs/locale
+      in: query
+      description: ''
+      required: false
+      schema:
+        type: string
+    - name: prefs/minutesBetweenSummaries
+      in: query
+      description: '`-1` for disabled, `1`, or `60`'
+      required: false
+      schema:
+        type: integer
+        format: int32
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: ../components/schemas/Member.yaml

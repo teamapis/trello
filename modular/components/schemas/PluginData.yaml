@@ -1,0 +1,29 @@
+type: object
+properties:
+  id:
+    $ref: ./TrelloID.yaml
+    example: 5c487f39294cab6ac1d6b305
+  idPlugin:
+    $ref: ./TrelloID.yaml
+    example: 55a5d915446f517774210003
+  scope:
+    type: string
+    enum:
+      - member
+      - board
+      - organization
+      - card
+    example: organization
+  idModel:
+    $ref: ./TrelloID.yaml
+    example: 586e8d7b1af892b26d5b76b1
+  value:
+    type: string
+    example: >-
+      {"token":"S=s458:U=bda7cda:E=16fd2e21f55:C=1687b30f2c0:P=185:A=it-team-0604:V=2:H=3b0f3bac9c2a2af766202ebb9530a4a5"}
+  access:
+    type: string
+    enum:
+      - private
+      - shared
+    example: private

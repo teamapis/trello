@@ -1,0 +1,103 @@
+get:
+  tags: []
+  summary: Get Checklists on a Card
+  description: Get the checklists on a card
+  operationId: get-cards-id-checklists
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the Card
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: checkItems
+      in: query
+      description: '`all` or `none`'
+      required: false
+      schema:
+        type: string
+        enum:
+          - all
+          - none
+        default: all
+    - name: checkItem_fields
+      in: query
+      description: '`all` or a comma-separated list of: `name,nameData,pos,state,type`'
+      required: false
+      explode: false
+      style: form
+      schema:
+        type: string
+        default: name,nameData,pos,state
+        enum:
+          - name
+          - nameData
+          - pos
+          - state
+          - type
+    - name: filter
+      in: query
+      description: '`all` or `none`'
+      required: false
+      schema:
+        type: string
+        default: all
+        enum:
+          - all
+          - none
+    - name: fields
+      in: query
+      explode: false
+      style: form
+      description: '`all` or a comma-separated list of: `idBoard,idCard,name,pos`'
+      required: false
+      schema:
+        type: string
+        default: all
+        enum:
+          - all
+          - name
+          - nameData
+          - pos
+          - state
+          - type
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+post:
+  tags: []
+  summary: Create Checklist on a Card
+  description: Create a new checklist on a card
+  operationId: post-cards-id-checklists
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the Card
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: name
+      in: query
+      description: The name of the checklist
+      required: false
+      schema:
+        type: string
+    - name: idChecklistSource
+      in: query
+      description: The ID of a source checklist to copy into the new one
+      required: false
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: pos
+      in: query
+      description: >-
+        The position of the checklist on the card. One of: `top`, `bottom`, or a
+        positive number.
+      required: false
+      schema:
+        type: string
+  deprecated: false
+  responses:
+    '200':
+      description: Success

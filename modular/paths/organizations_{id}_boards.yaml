@@ -1,0 +1,49 @@
+get:
+  tags: []
+  summary: Get Boards in an Organization
+  description: List the boards in a Workspace
+  operationId: get-organizations-id-boards
+  parameters:
+    - name: id
+      in: path
+      description: The ID or name of the organization
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: filter
+      in: query
+      description: >-
+        `all` or a comma-separated list of: `open`, `closed`, `members`,
+        `organization`, `public`
+      required: false
+      schema:
+        type: string
+        default: all
+        enum:
+          - all
+          - open
+          - closed
+          - members
+          - organization
+          - public
+    - name: fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of board
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      schema:
+        type: string
+        default: all
+        $ref: ../components/schemas/BoardFields.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              oneOf:
+                - $ref: ../components/schemas/Board.yaml

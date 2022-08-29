@@ -1,0 +1,23 @@
+post:
+  tags: []
+  summary: Create an auth Token for an Enterprise.
+  description: Create an auth Token for an Enterprise.
+  operationId: post-enterprises-id-tokens
+  parameters:
+    - name: id
+      in: path
+      description: ID of the enterprise to retrieve.
+      required: true
+      schema:
+        type: string
+    - name: expiration
+      in: query
+      description: 'One of: `1hour`, `1day`, `30days`, `never`'
+      required: false
+      schema:
+        type: string
+        default: none
+  deprecated: false
+  responses:
+    '200':
+      description: Success

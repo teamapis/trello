@@ -1,0 +1,22 @@
+get:
+  tags: []
+  summary: Get filtered Lists on a Board
+  description: ''
+  operationId: get-boards-id-lists-filter
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the board
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: filter
+      in: path
+      description: One of `all`, `closed`, `none`, `open`
+      required: true
+      schema:
+        $ref: ../components/schemas/ViewFilter.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success

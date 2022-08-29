@@ -1,0 +1,63 @@
+put:
+  tags: []
+  summary: Update a Member of an Organization
+  description: Add a member to a Workspace or update their member type.
+  operationId: put-organizations-id-members-idmember
+  parameters:
+    - name: id
+      in: path
+      description: The ID or name of the organization
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: idMember
+      in: path
+      description: The ID or username of the member to update
+      required: true
+      schema:
+        oneOf:
+          - type: string
+          - $ref: ../components/schemas/TrelloID.yaml
+    - name: type
+      in: query
+      description: 'One of: `admin`, `normal`'
+      required: true
+      schema:
+        type: string
+        enum:
+          - admin
+          - normal
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: ../components/schemas/Member.yaml
+delete:
+  tags: []
+  summary: Remove a Member from an Organization
+  description: Remove a member from a Workspace
+  operationId: delete-organizations-id-members
+  parameters:
+    - name: id
+      in: path
+      description: The ID or name of the organization
+      required: true
+      schema:
+        oneOf:
+          - $ref: ../components/schemas/TrelloID.yaml
+          - type: string
+            description: Name of the organization
+    - name: idMember
+      in: path
+      description: The ID of the Member to remove from the Workspace
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success

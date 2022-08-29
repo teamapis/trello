@@ -1,0 +1,28 @@
+get:
+  tags: []
+  summary: Get field on Organization
+  description: ''
+  operationId: get-organizations-id-field
+  parameters:
+    - name: id
+      in: path
+      description: The ID or name of the organization
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: field
+      in: path
+      description: >-
+        An organization
+        [field](/cloud/trello/guides/rest-api/object-definitions/)
+      required: true
+      schema:
+        $ref: ../components/schemas/OrganizationFields.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Organization.yaml

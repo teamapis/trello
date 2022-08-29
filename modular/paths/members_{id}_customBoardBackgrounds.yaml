@@ -1,0 +1,43 @@
+parameters:
+  - name: id
+    in: path
+    description: The ID or username of the member
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get a Member's custom Board Backgrounds
+  description: Get a member's custom board backgrounds
+  operationId: get-members-id-customboardbackgrounds
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/BoardBackground.yaml
+post:
+  tags: []
+  summary: Create a new custom Board Background
+  description: Upload a new custom board background
+  operationId: membersidcustomboardbackgrounds-1
+  parameters:
+    - name: file
+      in: query
+      description: ''
+      required: true
+      schema:
+        type: string
+        format: binary
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BoardBackground.yaml

@@ -1,0 +1,34 @@
+get:
+  tags: []
+  summary: Get a Membership of an Organization
+  description: Get a single Membership for an Organization
+  operationId: get-organizations-id-memberships-idmembership
+  parameters:
+    - name: id
+      in: path
+      description: The ID or name of the organization
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: idMembership
+      in: path
+      description: The ID of the membership to load
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: member
+      in: query
+      description: Whether to include the Member object in the response
+      required: false
+      schema:
+        type: boolean
+        default: false
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: ../components/schemas/Memberships.yaml

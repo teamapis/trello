@@ -1,0 +1,36 @@
+get:
+  tags: []
+  summary: Get a Token
+  description: Retrieve information about a token.
+  operationId: get-tokens-token
+  parameters:
+    - name: token
+      in: path
+      description: ''
+      required: true
+      schema:
+        type: string
+    - name: fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of `dateCreated`, `dateExpires`,
+        `idMember`, `identifier`, `permissions`
+      required: false
+      schema:
+        $ref: ../components/schemas/TokenFields.yaml
+        default: all
+    - name: webhooks
+      in: query
+      description: Determines whether to include webhooks.
+      required: false
+      schema:
+        type: boolean
+        default: false
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Token.yaml

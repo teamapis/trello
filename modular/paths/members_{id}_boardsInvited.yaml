@@ -1,0 +1,31 @@
+get:
+  tags: []
+  summary: Get Boards the Member has been invited to
+  description: Get the boards the member has been invited to
+  operationId: get-members-id-boardsinvited
+  parameters:
+    - name: id
+      in: path
+      description: The ID or username of the member
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: fields
+      in: query
+      description: >-
+        `all` or a comma-separated list of board
+        [fields](/cloud/trello/guides/rest-api/object-definitions/)
+      required: false
+      schema:
+        $ref: ../components/schemas/BoardFields.yaml
+        default: all
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Board.yaml

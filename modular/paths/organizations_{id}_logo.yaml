@@ -1,0 +1,44 @@
+post:
+  tags: []
+  summary: Update logo for an Organization
+  description: Set the logo image for a Workspace
+  operationId: post-organizations-id-logo
+  parameters:
+    - name: id
+      in: path
+      description: The ID or name of the Workspace
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: file
+      in: query
+      description: Image file for the logo
+      required: false
+      schema:
+        type: string
+        format: binary
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: ../components/schemas/Organization.yaml
+delete:
+  tags: []
+  summary: Delete Logo for Organization
+  description: Delete a the logo from a Workspace
+  operationId: delete-organizations-id-logo
+  parameters:
+    - name: id
+      in: path
+      description: The ID or name of the organization
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success

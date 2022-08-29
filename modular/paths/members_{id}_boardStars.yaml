@@ -1,0 +1,54 @@
+get:
+  tags: []
+  summary: Get a Member's boardStars
+  description: List a member's board stars
+  operationId: get-members-id-boardstars
+  parameters:
+    - name: id
+      in: path
+      description: The ID or username of the member
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+post:
+  tags: []
+  summary: Create Star for Board
+  description: Star a new board on behalf of a Member
+  operationId: post-members-id-boardstars
+  parameters:
+    - name: id
+      in: path
+      description: The ID or username of the member
+      required: true
+      schema:
+        oneOf:
+          - $ref: ../components/schemas/TrelloID.yaml
+          - type: string
+    - name: idBoard
+      in: query
+      description: The ID of the board to star
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: pos
+      in: query
+      description: >-
+        The position of the newly starred board. `top`, `bottom`, or a positive
+        float.
+      required: true
+      schema:
+        $ref: ../components/schemas/posStringOrNumber.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/BoardStars.yaml

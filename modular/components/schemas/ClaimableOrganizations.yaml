@@ -1,0 +1,45 @@
+type: object
+properties:
+  organizations:
+    type: array
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+          example: organization_name
+        displayName:
+          type: string
+          example: Organization Name
+        activeMembershipCount:
+          type: number
+          example: 5
+        idActiveAdmins:
+          type: array
+          items:
+            $ref: ./TrelloID.yaml
+        products:
+          type: array
+          items:
+            type: number
+            format: integer
+        id:
+          type: string
+          $ref: ./TrelloID.yaml
+          example: 617abd5995eae45169a11059
+        logoUrl:
+          type: string
+          nullable: true
+          example: null
+        dateLastActive:
+          type: string
+          nullable: true
+          example: '2019-08-22T18:15:53.546Z'
+          format: date
+          description: >-
+            The date of the most recent activity on any of the boards in the
+            workspace. If the workspace has no boards, or the boards have no
+            activity, this value will be null.
+  claimableCount:
+    type: number
+    example: 2

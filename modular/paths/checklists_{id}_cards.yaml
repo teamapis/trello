@@ -1,0 +1,16 @@
+get:
+  tags: []
+  summary: Get the Card a Checklist is on
+  description: ''
+  operationId: get-checklists-id-cards
+  parameters:
+    - name: id
+      in: path
+      description: ID of a checklist.
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success

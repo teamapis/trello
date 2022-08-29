@@ -1,0 +1,76 @@
+parameters:
+  - name: id
+    in: path
+    description: The ID of the list
+    required: true
+    schema:
+      type: string
+get:
+  tags: []
+  summary: Get a List
+  description: Get information about a List
+  operationId: get-lists-id
+  parameters:
+    - name: fields
+      in: query
+      style: form
+      explode: false
+      description: '`all` or a comma separated list of List field names.'
+      required: false
+      schema:
+        type: string
+        default: name,closed,idBoard,pos
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+put:
+  tags: []
+  summary: Update a List
+  description: Update the properties of a List
+  operationId: put-lists-id
+  parameters:
+    - name: name
+      in: query
+      description: New name for the list
+      required: false
+      schema:
+        type: string
+    - name: closed
+      in: query
+      description: Whether the list should be closed (archived)
+      required: false
+      schema:
+        type: boolean
+    - name: idBoard
+      in: query
+      description: ID of a board the list should be moved to
+      required: false
+      explode: false
+      style: form
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: pos
+      in: query
+      description: >-
+        New position for the list: `top`, `bottom`, or a positive floating point
+        number
+      required: false
+      schema:
+        oneOf:
+          - type: number
+            format: float
+          - type: string
+            enum:
+              - top
+              - bottom
+    - name: subscribed
+      in: query
+      description: Whether the active member is subscribed to this list
+      required: false
+      schema:
+        type: boolean
+  deprecated: false
+  responses:
+    '200':
+      description: Success

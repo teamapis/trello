@@ -1,0 +1,39 @@
+parameters:
+  - name: id
+    in: path
+    description: The ID or name of the Organization
+    required: true
+    schema:
+      oneOf:
+        - type: string
+        - $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get Tags of an Organization
+  description: List the organization's collections
+  operationId: get-organizations-id-tags
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              oneOf:
+                - $ref: ../components/schemas/Tag.yaml
+post:
+  tags: []
+  summary: Create a Tag in Organization
+  description: Create a Tag in an Organization
+  operationId: post-organizations-id-tags
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: ../components/schemas/Tag.yaml

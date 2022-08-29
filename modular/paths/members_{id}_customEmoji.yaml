@@ -1,0 +1,51 @@
+parameters:
+  - name: id
+    in: path
+    description: The ID or username of the member
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+get:
+  tags: []
+  summary: Get a Member's customEmojis
+  description: Get a Member's uploaded custom Emojis
+  operationId: get-members-id-customemoji
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/CustomEmoji.yaml
+post:
+  tags: []
+  summary: Create custom Emoji for Member
+  description: Create a new custom Emoji
+  operationId: post-members-id-customemoji
+  parameters:
+    - name: file
+      in: query
+      description: ''
+      required: true
+      schema:
+        type: string
+        format: binary
+    - name: name
+      in: query
+      description: Name for the emoji. 2 - 64 characters
+      required: true
+      schema:
+        type: string
+        minLength: 2
+        maxLength: 64
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/CustomEmoji.yaml

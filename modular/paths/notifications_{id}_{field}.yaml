@@ -1,0 +1,29 @@
+get:
+  tags: []
+  summary: Get a field of a Notification
+  description: Get a specific property of a notification
+  operationId: get-notifications-id-field
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the notification
+      required: true
+      schema:
+        $ref: ../components/schemas/TrelloID.yaml
+    - name: field
+      in: path
+      description: >-
+        A notification
+        [field](/cloud/trello/guides/rest-api/object-definitions/)
+      required: true
+      schema:
+        $ref: ../components/schemas/NotificationFields.yaml
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: ../components/schemas/Notification.yaml

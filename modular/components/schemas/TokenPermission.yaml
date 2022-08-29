@@ -1,0 +1,19 @@
+type: object
+properties:
+  idModel:
+    oneOf:
+      - $ref: ./TrelloID.yaml
+      - type: string
+        enum:
+          - '*'
+  modelType:
+    type: string
+    enum:
+      - board
+      - member
+      - organization
+      - enterprise
+  read:
+    type: boolean
+  write:
+    type: boolean

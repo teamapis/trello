@@ -1,0 +1,43 @@
+parameters:
+  - name: id
+    in: path
+    description: The ID or name of the Workspace
+    required: true
+    schema:
+      $ref: ../components/schemas/TrelloID.yaml
+post:
+  tags: []
+  summary: Create Export for Organizations
+  description: Kick off CSV export for an organization
+  operationId: post-organizations-id-exports
+  parameters:
+    - name: attachments
+      in: query
+      description: Whether the CSV should include attachments or not.
+      required: false
+      schema:
+        type: boolean
+        default: true
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Export.yaml
+get:
+  tags: []
+  summary: Retrieve Organization's Exports
+  description: Retrieve the exports that exist for the given organization
+  operationId: get-organizations-id-exports
+  deprecated: false
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Export.yaml
